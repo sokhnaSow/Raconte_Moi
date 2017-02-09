@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1"
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.0.1"
+}
+ext {
+    travisBuild = System.getenv("TRAVIS") == "true"
+    // allows for -Dpre-dex=false to be set
+    preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+}
+sonarqube {
+    properties {
+        property "sonar.projectName", "Java :: Simple Project :: SonarQube Scanner for Gradle"
+        property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+        property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+    }
+}
+
+allprojects {
+
+    group = "org.sonarqube"
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
