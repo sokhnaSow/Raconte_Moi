@@ -1,8 +1,10 @@
 # Raconte-Moi
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e795fe9afb88426f9c7f1f4fba2852aa)](https://www.codacy.com/app/benzait27/Raconte_Moi?utm_source=github.com&utm_medium=referral&utm_content=benzait27/Raconte_Moi&utm_campaign=badger)
+[![GitHub version](https://badge.fury.io/gh/benzait27%2FRaconte_Moi.svg)](https://badge.fury.io/gh/benzait27%2FRaconte_Moi)
 
-[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg?branch=master)](https://coveralls.io/github/benzait27/Raconte_Moi?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b206aebeb13e44b7b46afb0736057037)](https://www.codacy.com/app/benzait27/Raconte_Moi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=benzait27/Raconte_Moi&amp;utm_campaign=Badge_Grade)
+
+[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg)](https://coveralls.io/github/benzait27/Raconte_Moi)
 
 [![Build Status](https://travis-ci.org/benzait27/Raconte_Moi.svg?branch=master)](https://travis-ci.org/benzait27/Raconte_Moi)
 
