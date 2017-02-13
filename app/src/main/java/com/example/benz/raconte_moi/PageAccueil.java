@@ -1,5 +1,6 @@
 package com.example.benz.raconte_moi;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +22,10 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        /**Traitement
-         *
-         */
+        switch (v.getId()){
+            case R.id.bActivites:
+                startActivity(new Intent(this, ActivityManager.class));
+                break;
+        }
     }
 }
