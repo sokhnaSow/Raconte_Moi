@@ -17,10 +17,7 @@ package com.example.benz.raconte_moi;
         import android.widget.SeekBar;
         import android.widget.TextView;
         import android.widget.Toast;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.ImageButton;
+
 
         import java.util.UUID;
 
