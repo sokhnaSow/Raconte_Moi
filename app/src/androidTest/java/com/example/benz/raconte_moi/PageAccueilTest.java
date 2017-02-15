@@ -18,7 +18,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class PageAccueilTest {
     @Rule
     public ActivityTestRule<PageAccueil> m = new ActivityTestRule<PageAccueil>(PageAccueil.class);
-
     @Test
     public void useAppContext() throws  Exception {
         onView(withId(R.id.bActivites)).perform(click());

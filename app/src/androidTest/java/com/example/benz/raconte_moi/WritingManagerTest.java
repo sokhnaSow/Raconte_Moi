@@ -23,7 +23,6 @@ public class WritingManagerTest {
     public void testDrawingBtn() throws  Exception {
         onView(withId(R.id.drawingBtn)).perform(click());
         onView(withId(R.id.save_btn)).check(matches(isDisplayed()));
-
     }
     @Test
     public void testImageBtn() throws  Exception {

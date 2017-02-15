@@ -23,7 +23,6 @@ public class ActivityManagerTest {
     public void testWritngBtn() throws  Exception {
         onView(withId(R.id.writingBtn)).perform(click());
         onView(withId(R.id.drawingBtn)).check(matches(isDisplayed()));
-
     }
     @Test
     public void testReadingBtn() throws  Exception {
