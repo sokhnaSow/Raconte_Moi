@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "984724735455",
-    "firebase_url": "https://racontemoi-9ba63.firebaseio.com",
-    "project_id": "racontemoi-9ba63",
-    "storage_bucket": "racontemoi-9ba63.appspot.com"
+    "project_number": "509516509235",
+    "firebase_url": "https://racontemoi-3f12f.firebaseio.com",
+    "project_id": "racontemoi-3f12f",
+    "storage_bucket": "racontemoi-3f12f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984724735455:android:c313bcd947d6a3a3",
+        "mobilesdk_app_id": "1:509516509235:android:1c846fa9a97f94b5",
         "android_client_info": {
-          "package_name": "com.example.benzait27.raconte_moi"
+          "package_name": "com.example.benz.raconte_moi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "984724735455-9bujmo6382c9kfg81oif96304d6o5a7u.apps.googleusercontent.com",
+          "client_id": "509516509235-l2oksr0ut459mrocvgscsc2tlh2ipetu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.benzait27.raconte_moi",
+            "package_name": "com.example.benz.raconte_moi",
             "certificate_hash": "EB1AFD6C0EA01B419EA2F86CC0D74F5BFBBA4A65"
           }
         },
         {
-          "client_id": "984724735455-r6eemhsgot0fhbnpc8f6qrnhhon85a4f.apps.googleusercontent.com",
+          "client_id": "509516509235-pr5d39f98ocstlicv861h00c4u64qpd1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAfJF07w6FlcSlLCP2n7Wx1GU9Sa-nOVw8"
+          "current_key": "AIzaSyBZTE_EnNzrDtpWDVjZyVj-SacSzYjSAXk"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "984724735455-r6eemhsgot0fhbnpc8f6qrnhhon85a4f.apps.googleusercontent.com",
+              "client_id": "509516509235-pr5d39f98ocstlicv861h00c4u64qpd1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

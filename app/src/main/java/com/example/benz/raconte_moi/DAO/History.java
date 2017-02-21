@@ -1,28 +1,29 @@
 package com.example.benz.raconte_moi.DAO;
 
+import static android.R.attr.id;
+
 /**
  * Created by nadia on 17/02/2017.
  */
 
 public class History {
-    private String idHistory;
+    private int idHistory;
     private String title;
 
     public History() {
-
     }
 
-    public History(String idHistory, String title) {
+    public History(int idHistory, String title) {
 
         this.idHistory = idHistory;
         this.title = title;
     }
 
-    public String getIdHistory() {
+    public int getIdHistory() {
         return idHistory;
     }
 
-    public void setIdHistory(String idHistory) {
+    public void setIdHistory(int idHistory) {
         this.idHistory = idHistory;
     }
 
