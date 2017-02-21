@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class PageAccueil extends AppCompatActivity implements View.OnClickListener {
 
+    //just commit GestionParent
     Button bActivites;
 
     @Override
