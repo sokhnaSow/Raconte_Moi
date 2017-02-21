@@ -1,7 +1,5 @@
 package com.example.benz.raconte_moi;
 
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -14,19 +12,20 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.junit.Assert.*;
 
 /**
- * Instrumentation test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * Created by BENZ on 15/02/2017.
  */
-
-public class ExampleInstrumentedTest {
-
-
+@RunWith(AndroidJUnit4.class)
+public class PageAccueilTest {
+    @Rule
+    public ActivityTestRule<PageAccueil> m = new ActivityTestRule<PageAccueil>(PageAccueil.class);
     @Test
     public void useAppContext() throws  Exception {
+        onView(withId(R.id.bActivites)).perform(click());
+        onView(withId(R.id.writingBtn)).check(matches(isDisplayed()));
+
+
 
     }
 }
