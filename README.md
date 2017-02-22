@@ -6,9 +6,9 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b206aebeb13e44b7b46afb0736057037)](https://www.codacy.com/app/benzait27/Raconte_Moi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=benzait27/Raconte_Moi&amp;utm_campaign=Badge_Grade)
 
-[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg?branch=develop)](https://coveralls.io/github/benzait27/Raconte_Moi?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg?branch=feature%2FTestSetting)](https://coveralls.io/github/benzait27/Raconte_Moi?branch=feature%2FTestSetting)
 
-[![Build Status](https://travis-ci.org/benzait27/Raconte_Moi.svg?branch=develop)](https://travis-ci.org/benzait27/Raconte_Moi)
+[![Build Status](https://travis-ci.org/benzait27/Raconte_Moi.svg?branch=feature/TestSetting)](https://travis-ci.org/benzait27/Raconte_Moi)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
