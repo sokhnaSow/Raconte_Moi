@@ -6,14 +6,13 @@ package com.example.benz.raconte_moi.DAO;
 
 public class User {
 
-    private int idUser ;
     private String firstnameUser;
     private String lastnameUser;
     private String login;
     private String password;
 
-    public User(int idUser, String firstnameUser, String lastnameUser, String login, String password) {
-        this.idUser = idUser;
+    public User( String firstnameUser, String lastnameUser, String login, String password) {
+
         this.firstnameUser = firstnameUser;
         this.lastnameUser = lastnameUser;
         this.login = login;
@@ -23,9 +22,6 @@ public class User {
     public User() {
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
 
     public String getFirstnameUser() {
         return firstnameUser;
@@ -43,9 +39,6 @@ public class User {
         return password;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
 
     public void setFirstnameUser(String firstnameUser) {
         this.firstnameUser = firstnameUser;

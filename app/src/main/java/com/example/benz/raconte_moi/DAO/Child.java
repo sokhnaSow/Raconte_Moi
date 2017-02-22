@@ -5,28 +5,20 @@ package com.example.benz.raconte_moi.DAO;
  */
 
 public class Child {
-    private int idChild;
+
     private String nameChild;
     private int age ;
     private String idUser;
 
-    public Child(int idChild, String nameChild, int age, String idUser) {
+    public Child( String nameChild, int age, String idUser) {
 
-        this.idChild = idChild;
+
         this.nameChild = nameChild;
         this.age = age;
         this.idUser = idUser;
     }
 
     public Child() {
-    }
-
-    public int getIdChild() {
-        return idChild;
-    }
-
-    public void setIdChild(int idChild) {
-        this.idChild = idChild;
     }
 
     public String getNameChild() {

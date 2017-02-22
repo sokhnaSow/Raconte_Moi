@@ -6,8 +6,8 @@ package com.example.benz.raconte_moi.DAO;
 
 public class Writing {
 
-    private int idChild;
-    private int idHistory;
+    private String idChild;
+    private String idHistory;
     private int nbrError;
     private int score;
 
@@ -15,7 +15,7 @@ public class Writing {
     public Writing() {
     }
 
-    public Writing(int idChild, int idHistory, int nbrError, int score) {
+    public Writing(String idChild, String idHistory, int nbrError, int score) {
 
         this.idChild = idChild;
         this.idHistory = idHistory;
@@ -23,19 +23,19 @@ public class Writing {
         this.score = score;
     }
 
-    public int getIdChild() {
+    public String getIdChild() {
         return idChild;
     }
 
-    public void setIdChild(int idChild) {
+    public void setIdChild(String idChild) {
         this.idChild = idChild;
     }
 
-    public int getIdHistory() {
+    public String getIdHistory() {
         return idHistory;
     }
 
-    public void setIdHistory(int idHistory) {
+    public void setIdHistory(String idHistory) {
         this.idHistory = idHistory;
     }
 

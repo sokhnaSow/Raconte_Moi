@@ -23,7 +23,6 @@
         <activity android:name=".ReadingManager" />
         <activity android:name=".WritingDrawingManager" />
         <activity android:name=".WritingImageManager" />
-        <activity android:name=".DaoManagerHistory" />
         <activity android:name=".WritingManager"></activity>
     </application>
 

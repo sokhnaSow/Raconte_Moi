@@ -5,24 +5,17 @@ package com.example.benz.raconte_moi.DAO;
  */
 
 public class Category {
-    private int idCategory;
+
     private String nameCategory;
 
-    public Category(int idCategory, String nameCategory) {
-        this.idCategory = idCategory;
+    public Category( String nameCategory) {
+
         this.nameCategory = nameCategory;
     }
 
     public Category() {
     }
 
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
-    }
 
     public String getNameCategory() {
         return nameCategory;

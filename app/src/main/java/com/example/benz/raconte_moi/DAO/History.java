@@ -7,24 +7,15 @@ import static android.R.attr.id;
  */
 
 public class History {
-    private int idHistory;
+
     private String title;
 
     public History() {
     }
 
-    public History(int idHistory, String title) {
+    public History( String title) {
 
-        this.idHistory = idHistory;
         this.title = title;
-    }
-
-    public int getIdHistory() {
-        return idHistory;
-    }
-
-    public void setIdHistory(int idHistory) {
-        this.idHistory = idHistory;
     }
 
     public String getTitle() {
@@ -35,11 +26,5 @@ public class History {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "History{" +
-                "idHistory='" + idHistory + '\'' +
-                ", title='" + title + '\'' +
-                '}';
-    }
+
 }

@@ -5,6 +5,6 @@ package com.example.benz.raconte_moi.DAO;
  */
 
 public class Win {
-    private int idChild;
-    private int idRecompence;
+    private String idChild;
+    private String idRecompence;
 }

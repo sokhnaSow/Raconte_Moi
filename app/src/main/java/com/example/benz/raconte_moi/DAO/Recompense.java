@@ -6,6 +6,6 @@ package com.example.benz.raconte_moi.DAO;
 
 public class Recompense {
 
-    private int idRecompense;
+
 
 }

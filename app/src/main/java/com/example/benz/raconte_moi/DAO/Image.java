@@ -5,26 +5,18 @@ package com.example.benz.raconte_moi.DAO;
  */
 
 public class Image {
-    private int idImage;
-    private String pathImage ;
-    private  int idCategory;
 
-    public Image(int idImage, String pathImage, int idCategory) {
-        this.idImage = idImage;
+    private String pathImage ;
+    private  String idCategory;
+
+    public Image(String pathImage, String idCategory) {
+
         this.pathImage = pathImage;
         this.idCategory = idCategory;
     }
 
     public Image() {
 
-    }
-
-    public int getIdImage() {
-        return idImage;
-    }
-
-    public void setIdImage(int idImage) {
-        this.idImage = idImage;
     }
 
     public String getPathImage() {
@@ -35,11 +27,11 @@ public class Image {
         this.pathImage = pathImage;
     }
 
-    public int getIdCategory() {
+    public String getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(int idCategory) {
+    public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
     }
 }

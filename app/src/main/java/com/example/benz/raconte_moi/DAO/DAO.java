@@ -3,11 +3,14 @@ package com.example.benz.raconte_moi.DAO;
 
 import android.util.Log;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by nadia on 17/02/2017.
@@ -20,42 +23,52 @@ public class DAO {
 
 
 
-    History h;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
 
-    public void addHistory(History history){
+    public String addHistory(final History history){
 
-        refData.child("history").child(String.valueOf(history.getIdHistory())).setValue(history);
+        // key contient la clé primaire de histoire généré automatiquement
+
+        String key = refData.child("history").push().getKey();
+        refData.child("history").child(key).setValue(history);
+
+        return key;
+
 
     }
 
-    public void removeHistory(int idHistory){
+    public void removeHistory(String idHistory){
 
         refData.child("history/"+idHistory+"").removeValue();
 
     }
 
-    public void updateHistory(int idHistory , History newHistory){
+    public void updateHistory(String idHistory , History newHistory){
 
+        refData.child("history").child(idHistory).setValue(newHistory);
     }
 
-    public History searchHistory(int idHistory){
-        refData.child("history/"+idHistory+"").addListenerForSingleValueEvent(new ValueEventListener() {
+
+    public void searchHistory(String idHistory){
+
+        refData.child("history/"+idHistory).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                 h = dataSnapshot.getValue(History.class);
-
+                History h = dataSnapshot.getValue(History.class);
+                System.out.println("titre " +h.getTitle());
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
 
-        return  h;
+
     }
 
 
