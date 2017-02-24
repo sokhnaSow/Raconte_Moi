@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button bConnexion;
     TextView tvInscriptionLink, tvOubliInfoLink;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bConnexion.setOnClickListener(this);
         tvInscriptionLink.setOnClickListener(this);
         tvOubliInfoLink.setOnClickListener(this);
+
 
     }
 

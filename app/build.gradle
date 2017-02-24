@@ -8,10 +8,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.example.benz.raconte_moi"
+
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
        // minSdkVersion 21
         //targetSdkVersion 25
+        
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,7 +22,7 @@ android {
         unitTests.returnDefaultValues = true
     }
     buildTypes {
-    debug {
+        debug {
             testCoverageEnabled true
         }
         release {
@@ -28,9 +30,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
+
+
+    compile 'com.google.firebase:firebase-database:9.4.0'
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // App's dependencies, including test
@@ -85,3 +93,5 @@ tasks.coveralls {
     dependsOn 'connectedAndroidTest'
     onlyIf { System.env.'CI' }
 }
+
+apply plugin: 'com.google.gms.google-services'
