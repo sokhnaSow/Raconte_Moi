@@ -6,9 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.benz.raconte_moi.DAO.DAO;
-import com.example.benz.raconte_moi.DAO.History;
-
 public class Authentification extends AppCompatActivity implements View.OnClickListener{
 
     EditText etNomUtilisateur, etMotDePasse;

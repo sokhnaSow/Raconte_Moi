@@ -1,16 +1,11 @@
-package com.example.benz.raconte_moi.DAO;
+package com.example.benz.raconte_moi.dao;
 
 
-import android.util.Log;
-
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by nadia on 17/02/2017.
