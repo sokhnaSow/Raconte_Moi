@@ -1,4 +1,4 @@
-package com.example.benz.raconte_moi.dao;
+package com.example.benz.raconte_moi.DAO;
 
 
 import com.google.firebase.database.DataSnapshot;
