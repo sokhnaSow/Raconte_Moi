@@ -21,7 +21,7 @@ ext {
     preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
 
     // Define versions in a single place
-    minSdkVersion = 21
+    minSdkVersion = 19
     targetSdkVersion = 25
     compileSdkVersion = 25
     buildToolsVersion = '25.0.2'
