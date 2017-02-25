@@ -8,23 +8,36 @@ import android.widget.Button;
 
 public class PageAccueil extends AppCompatActivity implements View.OnClickListener {
 
-    Button bActivites;
+
+    Button bAjoutEnfant, bActivite, bDeconnecter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_accueil);
 
-        bActivites = (Button)findViewById(R.id.bActivites);
+        bAjoutEnfant = (Button)findViewById(R.id.bAjoutEnfant);
+        bActivite = (Button)findViewById(R.id.bActivite);
+        bDeconnecter = (Button)findViewById(R.id.bDeconnecter);
 
-        bActivites.setOnClickListener(this);
+        bAjoutEnfant.setOnClickListener(this);
+        bActivite.setOnClickListener(this);
+        bDeconnecter.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bActivites:
+            case R.id.bAjoutEnfant:
+                startActivity(new Intent(this, AjoutEnfant.class));
+                break;
+
+            case R.id.bActivite:
                 startActivity(new Intent(this, ActivityManager.class));
+                break;
+
+            case R.id.bDeconnecter:
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }

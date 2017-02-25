@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.benz.raconte_moi">
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +24,8 @@
         <activity android:name=".ReadingManager" />
         <activity android:name=".WritingDrawingManager" />
         <activity android:name=".WritingImageManager" />
-        <activity android:name=".WritingManager"></activity>
+        <activity android:name=".WritingManager" />
+        <activity android:name=".AjoutEnfant"></activity>
     </application>
 
 </manifest>
