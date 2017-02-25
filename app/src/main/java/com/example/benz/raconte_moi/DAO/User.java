@@ -8,51 +8,38 @@ public class User {
 
     private String firstnameUser;
     private String lastnameUser;
-    private String login;
-    private String password;
+    private String mail;
 
-    public User( String firstnameUser, String lastnameUser, String login, String password) {
-
+    public User(String firstnameUser, String lastnameUser, String mail) {
         this.firstnameUser = firstnameUser;
         this.lastnameUser = lastnameUser;
-        this.login = login;
-        this.password = password;
+        this.mail = mail;
     }
 
     public User() {
     }
 
-
     public String getFirstnameUser() {
         return firstnameUser;
+    }
+
+    public void setFirstnameUser(String firstnameUser) {
+        this.firstnameUser = firstnameUser;
     }
 
     public String getLastnameUser() {
         return lastnameUser;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-
-    public void setFirstnameUser(String firstnameUser) {
-        this.firstnameUser = firstnameUser;
-    }
-
     public void setLastnameUser(String lastnameUser) {
         this.lastnameUser = lastnameUser;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getMail() {
+        return mail;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

@@ -13,7 +13,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:text="Nom d'utilisateur"
+        android:text="Mail"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/etNomUtilisateur"
