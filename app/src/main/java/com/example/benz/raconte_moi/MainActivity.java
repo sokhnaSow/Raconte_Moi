@@ -12,11 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.benz.raconte_moi.DAO.DAO;
+import com.example.benz.raconte_moi.DAO.History;
 import com.example.benz.raconte_moi.DAO.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -24,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button bConnexion;
     TextView tvInscriptionLink, tvOubliInfoLink;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference refData = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bConnexion.setOnClickListener(this);
         tvInscriptionLink.setOnClickListener(this);
         tvOubliInfoLink.setOnClickListener(this);
+
+
+
 
 
     }
@@ -58,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if(task.isSuccessful()){
                                     Toast.makeText(MainActivity.this,"Connexion reussite",Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(MainActivity.this,PageAccueil.class);
+                                    i.putExtra("mail",etMail.getText().toString());
                                     startActivity(i);
                                 }
                                 else{
