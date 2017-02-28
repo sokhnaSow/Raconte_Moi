@@ -22,6 +22,7 @@ public class DAO {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
 
+    // Ajouter histoire
     public String addHistory(final History history){
 
         // key contient la clé primaire de histoire généré automatiquement
@@ -65,6 +66,9 @@ public class DAO {
 
 
     }
+
+
+
 
 
 }
