@@ -135,4 +135,11 @@ public class DAO {
         });
       return bitmap[0];
     }
+
+    public String addWriting(Writing w) {
+        String key = refData.child("Writing").push().getKey();
+        refData.child("Writing").child(key).setValue(w);
+
+        return key;
+    }
 }

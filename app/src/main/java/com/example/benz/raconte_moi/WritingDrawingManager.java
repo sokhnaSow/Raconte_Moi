@@ -29,6 +29,7 @@ package com.example.benz.raconte_moi;
         import com.example.benz.raconte_moi.DAO.History;
         import com.example.benz.raconte_moi.DAO.Illustration;
         import com.example.benz.raconte_moi.DAO.Image;
+        import com.example.benz.raconte_moi.DAO.Writing;
 
         import java.io.ByteArrayOutputStream;
         import java.io.File;
@@ -247,11 +248,15 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                              DAO dao = new DAO();
 
-                             String idImg = dao.addImage(drawView.getDrawingCache(),"IdKids/"+path,"test2");
+                            String idImg = dao.addImage(drawView.getDrawingCache(),"IdKids/"+path,"test2");
 
                             String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
-                            Illustration i = new Illustration(idImg,"title vide",text,"IdKids");
+                            History h = new History("titre");
+                            String keyH = d.addHistory(h);
+                            Illustration i = new Illustration(idImg,keyH,text);
                             dao.addIllustration(i);
+
+
                             /*Bundle bundle = new Bundle();
                             //Whene user save story, go to Result activity
                             /*Intent saveIntent=  new Intent(getApplicationContext(), ResultWriting.class);
@@ -259,6 +264,11 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                             bundle.putString("text",para.getText().toString());
                             saveIntent.putExtras(bundle);
                             startActivity(saveIntent);*/
+                            // cete etape doit etre apres la validation pour avoir le nombre de faut orthographe
+                             Intent intent = getIntent();
+                            String idChild = intent.getStringExtra("idChild");
+                            Writing w = new Writing(idChild,keyH,0,0);
+                            d.addWriting(w);
                         } else {
                             Toast unsavedToast = Toast.makeText(getApplicationContext(),
                                     "Oops! Image could not be saved.", Toast.LENGTH_SHORT);

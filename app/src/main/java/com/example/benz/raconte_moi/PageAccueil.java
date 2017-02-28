@@ -33,7 +33,10 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
                 break;
 
             case R.id.bActivite:
-                startActivity(new Intent(this, ActivityManager.class));
+                String idChild = "KdytbjZGQcZb3QU4Yz6";
+                Intent intent = new Intent(this, ActivityManager.class);
+                intent.putExtra("idChild",idChild);
+                startActivity(intent);
                 break;
 
             case R.id.bDeconnecter:

@@ -11,24 +11,16 @@ public class Illustration  {
     private String paragraphe;
     private String idEnfant;
 
-    public Illustration( String idImage,  String idHistory, String paragraphe, String idEnfant) {
+    public Illustration( String idImage,  String idHistory, String paragraphe) {
 
         this.idImage = idImage;
         this.idHistory = idHistory;
         this.paragraphe = paragraphe;
-        this.idEnfant= idEnfant;
     }
 
     public Illustration() {
     }
 
-    public  String getIdEnfant() {
-        return idEnfant;
-    }
-
-    public void setIdEnfant( String idEnfant) {
-        this.idEnfant = idEnfant;
-    }
 
     public  String getIdImage() {
         return idImage;
