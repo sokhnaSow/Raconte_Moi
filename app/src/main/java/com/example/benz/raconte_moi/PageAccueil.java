@@ -6,10 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class PageAccueil extends AppCompatActivity implements View.OnClickListener {
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference refData = database.getReference();
 
     Button bAjoutEnfant, bActivite, bDeconnecter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

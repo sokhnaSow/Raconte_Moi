@@ -25,7 +25,7 @@
         <activity android:name=".WritingDrawingManager" />
         <activity android:name=".WritingImageManager" />
         <activity android:name=".WritingManager" />
-        <activity android:name=".AjoutEnfant"></activity>
+        <activity android:name=".AjoutEnfant" />
     </application>
 
 </manifest>
