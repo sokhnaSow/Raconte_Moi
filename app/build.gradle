@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.kt3k.coveralls'
 
+
 android {
     //compileSdkVersion 25
     //buildToolsVersion "25.0.2"
@@ -36,9 +37,13 @@ android {
 
 dependencies {
 
-
+    compile 'com.google.firebase:firebase-core:9.4.0'
     compile 'com.google.firebase:firebase-database:9.4.0'
+
+    compile 'com.google.firebase:firebase-storage:9.4.0'
     compile 'com.google.firebase:firebase-auth:9.4.0'
+
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // App's dependencies, including test
@@ -93,5 +98,4 @@ tasks.coveralls {
     dependsOn 'connectedAndroidTest'
     onlyIf { System.env.'CI' }
 }
-
 apply plugin: 'com.google.gms.google-services'

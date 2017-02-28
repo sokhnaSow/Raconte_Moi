@@ -22,7 +22,13 @@ public class ActivityManager extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.writingBtn:
-                startActivity(new Intent(this, WritingManager.class));
+                Intent intent2 = getIntent();
+                String idChild = intent2.getStringExtra("idChild");
+
+                Intent intent = new Intent(this, WritingManager.class);
+                intent.putExtra("idChild",idChild);
+                startActivity(intent);
+
                 break;
             case R.id.readingBtn:
                 startActivity(new Intent(this, ReadingManager.class));
