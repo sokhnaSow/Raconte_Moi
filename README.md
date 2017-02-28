@@ -1,12 +1,14 @@
 # Raconte-Moi
 
+add githubPages  https://benzait27.github.io/Raconte_Moi/
+
 [![GitHub version](https://badge.fury.io/gh/benzait27%2FRaconte_Moi.svg)](https://badge.fury.io/gh/benzait27%2FRaconte_Moi)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b206aebeb13e44b7b46afb0736057037)](https://www.codacy.com/app/benzait27/Raconte_Moi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=benzait27/Raconte_Moi&amp;utm_campaign=Badge_Grade)
 
-[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg)](https://coveralls.io/github/benzait27/Raconte_Moi)
+[![Coverage Status](https://coveralls.io/repos/github/benzait27/Raconte_Moi/badge.svg?branch=feature%2FTestSetting)](https://coveralls.io/github/benzait27/Raconte_Moi?branch=feature%2FTestSetting)
 
-[![Build Status](https://travis-ci.org/benzait27/Raconte_Moi.svg?branch=master)](https://travis-ci.org/benzait27/Raconte_Moi)
+[![Build Status](https://travis-ci.org/benzait27/Raconte_Moi.svg?branch=feature/TestSetting)](https://travis-ci.org/benzait27/Raconte_Moi)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
@@ -26,12 +28,18 @@ Les outils à mettre en place pour le développements de l'application sont:
 Notre application sera sur Android Studio qui s'utilise assez facilement. Pour lancer le programme il faut cliquer sur un bouton RUN
 
 # Exécution les tests
-Il faudra faire les tests suivants : 
-$> git clone https://github.com/xx.git
-$> cd xxx
-$> ./gradlew build
-$> ./gradlew ckeck
-$> ./gradlew sonarqube
+git clone https://github.com/benzait27/Raconte_Moi.git
+cd Raconte_Moi
+gradlew clean
+
+si vous avez un probleme de sonarqubeplugin
+assuer que votre variable d'envirenmant JAVA_HOME pointe vers jdk8
+
+Si vous avez un problem de sdk et vous avez pas configurer votre varible environent ANDROID_HOME
+  Telecharger le fichier zip via ce lien audsous
+    https://docs.google.com/uc?export=download&id=0BzCssi5GmG94WndHZkdSLXVJV1E ( l'operation va prendre qlq temps)
+  Decompresé le copier son contenu( sdk et local.properties ) dans la racine du repertoire Raconte_Moi( l'operation va prendre qlq temps
+  Relancer  gradlew clean
 
 # Décomposition en bout à bout des tests
 
