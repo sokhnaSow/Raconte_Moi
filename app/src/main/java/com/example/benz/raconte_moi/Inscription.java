@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.benz.raconte_moi.DAO.DAO;
+import com.example.benz.raconte_moi.DAO.DaoUser;
 import com.example.benz.raconte_moi.DAO.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +22,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
     EditText etNom, etPrenom, etNbreEnfant, etMail, etNomUtilisateur, etMotDePasse;
     Button bInscription;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    DAO d;
+    DaoUser d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
         //etNomUtilisateur = (EditText)findViewById(R.id.etNomUtilisateur);
         etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
         bInscription = (Button)findViewById(R.id.bInscription);
-        d=new DAO();
+        d=new DaoUser();
         bInscription.setOnClickListener(this);
     }
 
@@ -46,7 +47,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                 //redirection vers le menu
 
                 User u = new User(etPrenom.getText().toString(),etNom.getText().toString(),etMail.getText().toString());
-                d.addUser(u);
+                String key = d.addUser(u);
                 final ProgressDialog progressDialog= ProgressDialog.show(Inscription.this,"please wait ..","Processing...",true);
                 firebaseAuth.createUserWithEmailAndPassword(etMail.getText().toString(),etMotDePasse.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -63,9 +64,7 @@ public class Inscription extends AppCompatActivity implements View.OnClickListen
                                 }
                             }
                         });
-              //  User u = new User(etPrenom.getText().toString(),etNom.getText().toString(),etMail.getText().toString());
 
-               // d.addUser(u);
                 break;
         }
     }

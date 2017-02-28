@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.benz.raconte_moi.DAO.DAO;
+import com.example.benz.raconte_moi.DAO.DaoUser;
 import com.example.benz.raconte_moi.DAO.History;
 import com.example.benz.raconte_moi.DAO.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText etMail, etMotDePasse;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
+    DaoUser du;
+    String key ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvOubliInfoLink.setOnClickListener(this);
 
 
+        /*for(User user : du.getUsers()){
+            if(user.getMail().equals(etMail.getText().toString())){
+                key=user.getIdUser();
+                System.out.println(key);
+            }
+        }*/
 
 
 
@@ -70,9 +83,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 progressDialog.dismiss();
                                 if(task.isSuccessful()){
                                     Toast.makeText(MainActivity.this,"Connexion reussite",Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(MainActivity.this,PageAccueil.class);
-                                    i.putExtra("mail",etMail.getText().toString());
-                                    startActivity(i);
+
+                                    refData.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Log.e("count",""+dataSnapshot.getChildrenCount());
+
+
+                                            for(DataSnapshot child : dataSnapshot.getChildren()){
+                                                User u = child.getValue(User.class);
+                                                if(u.getMail().equals(etMail.getText().toString())){
+                                                    Intent i = new Intent(MainActivity.this,PageAccueil.class);
+                                                    i.putExtra("id",u.getIdUser());
+                                                    i.putExtra("nom",u.getLastnameUser());
+                                                    i.putExtra("prenom",u.getFirstnameUser());
+                                                    i.putExtra("mail",u.getMail());
+
+                                                    startActivity(i);
+                                                }
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+
+                                    });
+
+
+
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this,"Votre mail ou votre mot de passe est invalide ",Toast.LENGTH_LONG).show();

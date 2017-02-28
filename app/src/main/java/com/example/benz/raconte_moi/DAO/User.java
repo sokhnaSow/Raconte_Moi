@@ -6,6 +6,7 @@ package com.example.benz.raconte_moi.DAO;
 
 public class User {
 
+    private String idUser;
     private String firstnameUser;
     private String lastnameUser;
     private String mail;
@@ -17,6 +18,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getFirstnameUser() {

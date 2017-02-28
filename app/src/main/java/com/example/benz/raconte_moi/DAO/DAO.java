@@ -67,15 +67,7 @@ public class DAO {
 
     }
 
-    public String addUser(User user){
 
-        String key = refData.child("user").push().getKey();
-        refData.child("user").child(key).setValue(user);
-
-        return key;
-
-
-    }
 
 
 
