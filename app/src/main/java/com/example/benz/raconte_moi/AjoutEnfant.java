@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.benz.raconte_moi.DAO.Child;
+import com.example.benz.raconte_moi.DAO.DAO;
+
 public class AjoutEnfant extends AppCompatActivity implements View.OnClickListener{
 
     EditText etNom, etPrenom, etAge, etNiveau;
@@ -30,6 +33,11 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bValider:
+                DAO d = new DAO();
+                Intent intent2 = getIntent();
+                String idParent = intent2.getStringExtra("id");
+                Child c = new Child(etPrenom.getText().toString(),Integer.parseInt(etAge.getText().toString()),idParent);
+                d.addKid(c);
                 startActivity(new Intent(this, PageAccueil.class));
                 break;
         }

@@ -43,20 +43,31 @@ public class DAO {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
-<<<<<<< HEAD
+
 
     // Ajouter histoire
-=======
+
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
     static  Bitmap b = null;
->>>>>>> feature/Clouding
+
     public String addHistory(final History history){
 
         // key contient la clé primaire de histoire généré automatiquement
 
         String key = refData.child("history").push().getKey();
         refData.child("history").child(key).setValue(history);
+
+        return key;
+
+
+    }
+    public String addKid( Child c){
+
+        // key contient la clé primaire de histoire généré automatiquement
+
+        String key = refData.child("children").push().getKey();
+        refData.child("children").child(key).setValue(c);
 
         return key;
 
@@ -111,11 +122,11 @@ public class DAO {
     }
 
 
-<<<<<<< HEAD
 
 
 
-=======
+
+
     public String addIllustration(Illustration i) {
 
         String key = refData.child("Illustration").push().getKey();
@@ -123,7 +134,6 @@ public class DAO {
 
         return key;
     }
-
 
 
     public Bitmap searchImage(String idImage) {
@@ -152,5 +162,5 @@ public class DAO {
 
         return key;
     }
->>>>>>> feature/Clouding
+
 }
