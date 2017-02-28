@@ -2,8 +2,13 @@ package com.example.benz.raconte_moi;
 
 
         import android.app.Dialog;
+        import android.content.Context;
         import android.content.DialogInterface;
         import android.content.Intent;
+        import android.graphics.Bitmap;
+        import android.graphics.Canvas;
+        import android.net.Uri;
+        import android.os.Environment;
         import android.provider.MediaStore;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
@@ -19,6 +24,15 @@ package com.example.benz.raconte_moi;
         import android.widget.Toast;
 
 
+        import com.bumptech.glide.Glide;
+        import com.example.benz.raconte_moi.DAO.DAO;
+        import com.example.benz.raconte_moi.DAO.History;
+        import com.example.benz.raconte_moi.DAO.Illustration;
+        import com.example.benz.raconte_moi.DAO.Image;
+
+        import java.io.ByteArrayOutputStream;
+        import java.io.File;
+        import java.net.URI;
         import java.util.UUID;
 
 public class WritingDrawingManager extends AppCompatActivity implements View.OnClickListener {
@@ -29,8 +43,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
     private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn, opacityBtn;
     //sizes
     private float smallBrush, mediumBrush, largeBrush;
-
-
+    private DAO d;
 
 
     @Override
@@ -72,6 +85,9 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
         //opacity
         opacityBtn = (ImageButton)findViewById(R.id.opacity_btn);
         opacityBtn.setOnClickListener(this);
+        this.d = new DAO();
+
+        //drawView.draw(new Canvas(d.searchImage("zz")));
     }
 
     @Override
@@ -208,17 +224,35 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                         //save drawing
                         drawView.setDrawingCacheEnabled(true);
                         //attempt to save
+                        String path = UUID.randomUUID().toString() + ".png";
                         String imgSaved = MediaStore.Images.Media.insertImage(
                                 getContentResolver(), drawView.getDrawingCache(),
-                                UUID.randomUUID().toString() + ".png", "drawing");
+                                path, "drawing");
+                        String uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI.getPath()+"/"+path;
+
                         //feedback
                         if (imgSaved != null) {
+                            String CameraFolder="Camera";
+                            File CameraDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString());
+                            File[] files = CameraDirectory.listFiles();
+                            for (File CurFile : files) {
+                                if (CurFile.isFile()) {
+                                    path = CurFile.getPath();
+                                    break;
+                                }
+                            }
                             Toast savedToast = Toast.makeText(getApplicationContext(),
                                     "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
                             savedToast.show();
 
-                            Bundle bundle = new Bundle();
+                             DAO dao = new DAO();
 
+                             String idImg = dao.addImage(drawView.getDrawingCache(),"IdKids/"+path,"test2");
+
+                            String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
+                            Illustration i = new Illustration(idImg,"title vide",text,"IdKids");
+                            dao.addIllustration(i);
+                            /*Bundle bundle = new Bundle();
                             //Whene user save story, go to Result activity
                             /*Intent saveIntent=  new Intent(getApplicationContext(), ResultWriting.class);
                             bundle.putSerializable("view",(DrawingView) drawView);
@@ -288,5 +322,10 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
             seekDialog.show();
         }
     }
-
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 }

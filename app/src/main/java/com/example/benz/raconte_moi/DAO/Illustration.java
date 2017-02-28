@@ -6,33 +6,43 @@ package com.example.benz.raconte_moi.DAO;
 
 public class Illustration  {
 
-    private int idImage;
-    private int idHistory;
+    private  String idImage;
+    private  String idHistory;
     private String paragraphe;
+    private String idEnfant;
 
-    public Illustration( int idImage, int idHistory, String paragraphe) {
+    public Illustration( String idImage,  String idHistory, String paragraphe, String idEnfant) {
 
         this.idImage = idImage;
         this.idHistory = idHistory;
         this.paragraphe = paragraphe;
+        this.idEnfant= idEnfant;
     }
 
     public Illustration() {
     }
 
-    public int getIdImage() {
+    public  String getIdEnfant() {
+        return idEnfant;
+    }
+
+    public void setIdEnfant( String idEnfant) {
+        this.idEnfant = idEnfant;
+    }
+
+    public  String getIdImage() {
         return idImage;
     }
 
-    public void setIdImage(int idImage) {
+    public void setIdImage( String idImage) {
         this.idImage = idImage;
     }
 
-    public int getIdHistory() {
+    public  String getIdHistory() {
         return idHistory;
     }
 
-    public void setIdHistory(int idHistory) {
+    public void setIdHistory( String idHistory) {
         this.idHistory = idHistory;
     }
 
