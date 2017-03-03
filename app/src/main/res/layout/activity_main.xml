@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,56 +10,79 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.benz.raconte_moi.MainActivity">
+    tools:context="com.example.benz.raconte_moi.MainActivity"
+    android:background="@drawable/backgroundlogin" >
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Nom d'utilisateur"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etNomUtilisateur"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:id="@+id/etNomUtilisateur"
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Mot de passe"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/etMotDePasse"
-        android:layout_width="match_parent"
-        android:inputType="textPassword"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNomUtilisateur"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/bConnexion"
         android:text="Connexion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvInscriptionLink"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:background="@color/colorPrimary" />
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tvInscriptionLink"
+        android:layout_width="120dp"
+        android:text="S'inscrire"
+        android:textStyle="bold"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_above="@+id/tvOubliInfoLink"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_marginEnd="33dp" />
+
+    <TextView
+        android:id="@+id/tvOubliInfoLink"
+        android:layout_width="wrap_content"
+        android:text="Mot de passe oublié"
+        android:textStyle="bold"
+        android:layout_gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_above="@+id/bConnexion"
+        android:layout_alignParentStart="true"
+        android:id="@+id/etMotDePasse" />
 
-        <TextView
-            android:id="@+id/tvInscriptionLink"
-            android:layout_width="wrap_content"
-            android:text="S'inscrire"
-            android:textStyle="bold"
-            android:layout_gravity="left"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tvOubliInfoLink"
-            android:layout_width="wrap_content"
-            android:text="Informations oubliées"
-            android:textStyle="bold"
-            android:layout_gravity="right"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    
-</LinearLayout>
+</RelativeLayout>

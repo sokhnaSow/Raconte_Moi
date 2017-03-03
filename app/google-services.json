@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "509516509235-cbr72nkjn7lvdqib3etbloro8299dvkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.benz.raconte_moi",
+            "certificate_hash": "8a099ab36283d5c81206c94fc93cffe657979d5e"
+          }
+        },
+        {
           "client_id": "509516509235-l2oksr0ut459mrocvgscsc2tlh2ipetu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.benz.raconte_moi",
-            "certificate_hash": "EB1AFD6C0EA01B419EA2F86CC0D74F5BFBBA4A65"
+            "certificate_hash": "eb1afd6c0ea01b419ea2f86cc0d74f5bfbba4a65"
           }
         },
         {

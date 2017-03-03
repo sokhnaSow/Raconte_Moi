@@ -33,13 +33,15 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-           case R.id.bValider:
-               d = new DAO();
-               Child c = new Child(etPrenom.getText().toString(), Integer.parseInt(etAge.getText().toString()), etNiveau.getText().toString());
-               d.addChildren(c);
 
-               startActivity(new Intent(this, PageAccueil.class));
-               break;
+            case R.id.bValider:
+                DAO d = new DAO();
+                Intent intent2 = getIntent();
+                String idParent = intent2.getStringExtra("id");
+                Child c = new Child(etPrenom.getText().toString(),Integer.parseInt(etAge.getText().toString()),idParent);
+                 d.addChildren(c);
+                startActivity(new Intent(this, PageAccueil.class));
+                break;
         }
     }
 
