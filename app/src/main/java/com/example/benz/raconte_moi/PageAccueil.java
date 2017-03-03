@@ -7,11 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class PageAccueil extends AppCompatActivity implements View.OnClickListener {
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference refData = database.getReference();
 
     Button bAjoutEnfant, bActivite, bDeconnecter;
+
     TextView mail , prenom, nom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

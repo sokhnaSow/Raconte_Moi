@@ -121,6 +121,14 @@ public class DAO {
 
     }
 
+    public String addChildren(final Child children){
+
+
+        String key = refData.child("children").push().getKey();
+        refData.child("children").child(key).setValue(children);
+
+        return key;
+    }
 
 
 
@@ -162,5 +170,6 @@ public class DAO {
 
         return key;
     }
+
 
 }

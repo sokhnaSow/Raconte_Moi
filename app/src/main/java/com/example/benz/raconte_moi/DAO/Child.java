@@ -8,41 +8,48 @@ public class Child {
 
     private String nameChild;
     private int age ;
-    private String idUser;
+    private String levelStudy;
+    //private String idUser;
 
-    public Child( String nameChild, int age, String idUser) {
+    public Child( String nameChild, int age, String levelStudy) {
 
 
         this.nameChild = nameChild;
         this.age = age;
-        this.idUser = idUser;
+        this.levelStudy = levelStudy;
     }
 
     public Child() {
     }
 
     public String getNameChild() {
+
         return nameChild;
     }
 
     public void setNameChild(String nameChild) {
+
         this.nameChild = nameChild;
     }
 
     public int getAge() {
+
         return age;
     }
 
     public void setAge(int age) {
+
         this.age = age;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public String getLevelStudy() {
+
+        return levelStudy;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setLevelStudy(String levelStudy) {
+
+        this.levelStudy = levelStudy;
     }
 }
 
