@@ -1,11 +1,14 @@
 package com.example.benz.raconte_moi.DAO;
 
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 /**
  * Created by nadia on 17/02/2017.
@@ -16,11 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DAO {
 
-
-
-
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference refData = database.getReference();
+    DatabaseReference refData = database.getReference(); //récupération des données
 
     public String addHistory(final History history){
 
@@ -66,5 +66,15 @@ public class DAO {
 
     }
 
+    /** Section des enfants**/
 
+    public String addChildren(final Child children){
+
+        String key = refData.child("children").push().getKey();
+        refData.child("children").child(key).setValue(children);
+
+        return key;
+    }
+
+    /** Fin section des enfants**/
 }
