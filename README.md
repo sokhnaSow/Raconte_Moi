@@ -28,12 +28,18 @@ Les outils à mettre en place pour le développements de l'application sont:
 Notre application sera sur Android Studio qui s'utilise assez facilement. Pour lancer le programme il faut cliquer sur un bouton RUN
 
 # Exécution les tests
-Il faudra faire les tests suivants : 
-$> git clone https://github.com/xx.git
-$> cd xxx
-$> ./gradlew build
-$> ./gradlew ckeck
-$> ./gradlew sonarqube
+git clone https://github.com/benzait27/Raconte_Moi.git
+cd Raconte_Moi
+gradlew clean
+
+si vous avez un probleme de sonarqubeplugin
+assuer que votre variable d'envirenmant JAVA_HOME pointe vers jdk8
+
+Si vous avez un problem de sdk et vous avez pas configurer votre varible environent ANDROID_HOME
+  Telecharger le fichier zip via ce lien audsous
+    https://docs.google.com/uc?export=download&id=0BzCssi5GmG94WndHZkdSLXVJV1E ( l'operation va prendre qlq temps)
+  Decompresé le copier son contenu( sdk et local.properties ) dans la racine du repertoire Raconte_Moi( l'operation va prendre qlq temps
+  Relancer  gradlew clean
 
 # Décomposition en bout à bout des tests
 

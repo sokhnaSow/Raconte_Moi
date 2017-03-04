@@ -12,7 +12,7 @@ import com.example.benz.raconte_moi.DAO.DAO;
 
 public class AjoutEnfant extends AppCompatActivity implements View.OnClickListener{
 
-    //pout commit
+    //pour commit
     EditText etPrenom, etAge, etNiveau;
     Button bValider;
     DAO d;
