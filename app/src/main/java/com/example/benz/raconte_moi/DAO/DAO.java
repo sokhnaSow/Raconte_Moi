@@ -1,23 +1,33 @@
 package com.example.benz.raconte_moi.DAO;
 
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
+import android.util.Base64;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnPausedListener;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.List;
+import java.io.File;
+import java.net.URI;
 
 /**
  * Created by nadia on 17/02/2017.
@@ -66,7 +76,7 @@ public class DAO {
 
     public String addImage(Bitmap bitmap, String path, String idCategorie) {
 
-        // store image on firebase storage
+      // store image on firebase storage
         StorageReference mountainsRef = storageRef.child("Images/"+path);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -151,7 +161,7 @@ public class DAO {
                 // Handle any errors
             }
         });
-        return bitmap[0];
+      return bitmap[0];
     }
 
     public String addWriting(Writing w) {

@@ -246,7 +246,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                                     "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
                             savedToast.show();
 
-                            DAO dao = new DAO();
+                             DAO dao = new DAO();
 
                             String idImg = dao.addImage(drawView.getDrawingCache(),"IdKids/"+path,"test2");
 
@@ -265,7 +265,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                             saveIntent.putExtras(bundle);
                             startActivity(saveIntent);*/
                             // cete etape doit etre apres la validation pour avoir le nombre de faut orthographe
-                            Intent intent = getIntent();
+                             Intent intent = getIntent();
                             String idChild = intent.getStringExtra("idChild");
                             Writing w = new Writing(idChild,keyH,0,0);
                             d.addWriting(w);

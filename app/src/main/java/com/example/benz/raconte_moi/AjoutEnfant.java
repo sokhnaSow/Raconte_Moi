@@ -39,7 +39,7 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
                 Intent intent2 = getIntent();
                 String idParent = intent2.getStringExtra("id");
                 Child c = new Child(etPrenom.getText().toString(),Integer.parseInt(etAge.getText().toString()),idParent);
-                d.addChildren(c);
+                 d.addChildren(c);
                 startActivity(new Intent(this, PageAccueil.class));
                 break;
         }

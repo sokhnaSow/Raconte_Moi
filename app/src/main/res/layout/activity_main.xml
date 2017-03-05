@@ -84,4 +84,5 @@
         android:layout_above="@+id/bConnexion"
         android:layout_alignParentStart="true"
         android:id="@+id/etMotDePasse" />
+
 </RelativeLayout>
