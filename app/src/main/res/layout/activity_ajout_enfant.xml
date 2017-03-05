@@ -10,7 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.example.benz.raconte_moi.AjoutEnfant">
-
+    <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Nom"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etNom"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+    -->
     <TextView
         android:layout_width="wrap_content"
         android:text="Prénom"

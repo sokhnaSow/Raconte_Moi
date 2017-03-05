@@ -6,11 +6,12 @@ package com.example.benz.raconte_moi.DAO;
 
 public class Illustration  {
 
-    private int idImage;
-    private int idHistory;
+    private  String idImage;
+    private  String idHistory;
     private String paragraphe;
+    private String idEnfant;
 
-    public Illustration( int idImage, int idHistory, String paragraphe) {
+    public Illustration( String idImage,  String idHistory, String paragraphe) {
 
         this.idImage = idImage;
         this.idHistory = idHistory;
@@ -20,19 +21,20 @@ public class Illustration  {
     public Illustration() {
     }
 
-    public int getIdImage() {
+
+    public  String getIdImage() {
         return idImage;
     }
 
-    public void setIdImage(int idImage) {
+    public void setIdImage( String idImage) {
         this.idImage = idImage;
     }
 
-    public int getIdHistory() {
+    public  String getIdHistory() {
         return idHistory;
     }
 
-    public void setIdHistory(int idHistory) {
+    public void setIdHistory( String idHistory) {
         this.idHistory = idHistory;
     }
 

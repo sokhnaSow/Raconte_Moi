@@ -23,7 +23,12 @@ public class WritingManager extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.drawingBtn:
-                startActivity(new Intent(this, WritingDrawingManager.class));
+                Intent intent2 = getIntent();
+                String idChild = intent2.getStringExtra("idChild");
+
+                Intent intent = new Intent(this, WritingDrawingManager.class);
+                intent.putExtra("idChild",idChild);
+                startActivity(intent);
                 break;
             case R.id.imageBtn:
                 startActivity(new Intent(this, WritingImageManager.class));
