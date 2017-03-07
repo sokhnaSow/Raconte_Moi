@@ -1,5 +1,6 @@
 package com.example.benz.raconte_moi;
 
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -33,9 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private static final String TAG = "LoginActivity";
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
     DaoUser du;
-    String key ;
+    String key;
     User u;
     MainPresenter presenter;
 
@@ -55,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etMail = (EditText)findViewById(R.id.etNomUtilisateur);
-         etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
-        bConnexion = (Button)findViewById(R.id.bConnexion);
-        tvInscriptionLink = (TextView)findViewById(R.id.tvInscriptionLink);
-        tvOubliInfoLink = (TextView)findViewById(R.id.tvOubliInfoLink);
+        etMail = (EditText) findViewById(R.id.etNomUtilisateur);
+        etMotDePasse = (EditText) findViewById(R.id.etMotDePasse);
+        bConnexion = (Button) findViewById(R.id.bConnexion);
+        tvInscriptionLink = (TextView) findViewById(R.id.tvInscriptionLink);
+        tvOubliInfoLink = (TextView) findViewById(R.id.tvOubliInfoLink);
 
         bConnexion.setOnClickListener(this);
         tvInscriptionLink.setOnClickListener(this);
@@ -77,48 +76,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }*/
 
 
-
     }
 
     @Override
     public void onClick(View view) {
         presenter.onMainClicked();
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.bConnexion:
 
                 Log.d(TAG, "Login");
-                        if (!validate()){
-                            if (!validate()) {
-                                onLoginFailed();
-                                return;
-                            }
-                        }
+                if (!validate()) {
+                    if (!validate()) {
+                        onLoginFailed();
+                        return;
+                    }
+                }
                 bConnexion.setEnabled(false);
                 final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.AppTheme_Dark_Dialog);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Authenticating...");
                 progressDialog.show();
-                firebaseAuth.signInWithEmailAndPassword(etMail.getText().toString(),etMotDePasse.getText().toString())
+                firebaseAuth.signInWithEmailAndPassword(etMail.getText().toString(), etMotDePasse.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressDialog.dismiss();
-                                if(task.isSuccessful()){
-                                    Toast.makeText(MainActivity.this,"Connexion succeed",Toast.LENGTH_LONG).show();
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(MainActivity.this, "Connexion succeed", Toast.LENGTH_LONG).show();
 
                                     refData.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
-                                            Log.e("count",""+dataSnapshot.getChildrenCount());
-                                            for(DataSnapshot child : dataSnapshot.getChildren()){
+                                            Log.e("count", "" + dataSnapshot.getChildrenCount());
+
+
+                                            for (DataSnapshot child : dataSnapshot.getChildren()) {
                                                 User u = child.getValue(User.class);
-                                                if(u.getMail().equals(etMail.getText().toString())){
-                                                    Intent i = new Intent(MainActivity.this,PageAccueil.class);
-                                                    i.putExtra("id",u.getIdUser());
-                                                    i.putExtra("nom",u.getLastnameUser());
-                                                    i.putExtra("prenom",u.getFirstnameUser());
-                                                    i.putExtra("mail",u.getMail());
+                                                if (u.getMail().equals(etMail.getText().toString())) {
+                                                    Intent i = new Intent(MainActivity.this, PageAccueil.class);
+                                                    i.putExtra("id", u.getIdUser());
+                                                    i.putExtra("nom", u.getLastnameUser());
+                                                    i.putExtra("prenom", u.getFirstnameUser());
+                                                    i.putExtra("mail", u.getMail());
 
                                                     startActivity(i);
                                                 }
@@ -134,10 +134,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     });
 
 
-
-                                }
-                                else{
-                                    Toast.makeText(MainActivity.this,"invalid email or password ",Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "invalid email or password ", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -198,29 +196,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return valid;
 
 
-    @Override
-    public String getUsername(){
-        return u.getMail();
+        @Override
+        public String getUsername () {
+            return u.getMail();
+        }
+        //public String getUsername() {
+        //  return etMail.getText().toString();
+        //}
+
+        @Override
+        public void showUserNameError ( int idMail){
+
+            etMail.setError(getString(idMail));
+        }
+
+        @Override
+        public String getPwd () {
+
+            return etMotDePasse.getText().toString();
+        }
+
+        @Override
+        public void showPwdError ( int idPwd){
+            etMotDePasse.setError(getString(idPwd));
+
+        }
     }
-    //public String getUsername() {
-      //  return etMail.getText().toString();
-    //}
 
-    @Override
-    public void showUserNameError(int idMail) {
-
-        etMail.setError(getString(idMail));
-    }
-
-    @Override
-    public String getPwd() {
-
-        return etMotDePasse.getText().toString();
-    }
-
-    @Override
-    public void showPwdError(int idPwd) {
-        etMotDePasse.setError(getString(idPwd));
-
-    }
-}
