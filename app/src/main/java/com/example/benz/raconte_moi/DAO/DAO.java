@@ -1,16 +1,9 @@
 package com.example.benz.raconte_moi.DAO;
 
 
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.Settings;
-import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
-import android.util.Base64;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,14 +13,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnPausedListener;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.net.URI;
 
 /**
  * Created by nadia on 17/02/2017.
@@ -62,17 +50,7 @@ public class DAO {
 
 
     }
-    public String addKid( Child c){
 
-        // key contient la clé primaire de histoire généré automatiquement
-
-        String key = refData.child("children").push().getKey();
-        refData.child("children").child(key).setValue(c);
-
-        return key;
-
-
-    }
 
     public String addImage(Bitmap bitmap, String path, String idCategorie) {
 
@@ -121,7 +99,7 @@ public class DAO {
 
     }
 
-    public String addChildren(final Child children){
+    public String addChildren(Child children){
 
 
         String key = refData.child("children").push().getKey();
@@ -129,10 +107,6 @@ public class DAO {
 
         return key;
     }
-
-
-
-
 
 
     public String addIllustration(Illustration i) {

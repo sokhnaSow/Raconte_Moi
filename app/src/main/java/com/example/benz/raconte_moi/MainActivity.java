@@ -2,9 +2,9 @@ package com.example.benz.raconte_moi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,27 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.benz.raconte_moi.DAO.DAO;
 import com.example.benz.raconte_moi.DAO.DaoUser;
-import com.example.benz.raconte_moi.DAO.History;
 import com.example.benz.raconte_moi.DAO.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Iterator;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "LoginActivity";
     EditText etMail, etMotDePasse;
     Button bConnexion;
     TextView tvInscriptionLink, tvOubliInfoLink;
@@ -48,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         etMail = (EditText)findViewById(R.id.etNomUtilisateur);
-        etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
+         etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
         bConnexion = (Button)findViewById(R.id.bConnexion);
         tvInscriptionLink = (TextView)findViewById(R.id.tvInscriptionLink);
         tvOubliInfoLink = (TextView)findViewById(R.id.tvOubliInfoLink);
@@ -74,7 +68,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.bConnexion:
 
-                final ProgressDialog progressDialog= ProgressDialog.show(MainActivity.this,"please wait ..","Processing...",true);
+                Log.d(TAG, "Login");
+                        if (!validate()){
+                            if (!validate()) {
+                                onLoginFailed();
+                                return;
+                            }
+                        }
+                bConnexion.setEnabled(false);
+                final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.AppTheme_Dark_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
                 firebaseAuth.signInWithEmailAndPassword(etMail.getText().toString(),etMotDePasse.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -82,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressDialog.dismiss();
                                 if(task.isSuccessful()){
-                                    Toast.makeText(MainActivity.this,"Connexion reussite",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(MainActivity.this,"Connexion succeed",Toast.LENGTH_LONG).show();
 
                                     refData.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
@@ -116,10 +121,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                 }
                                 else{
-                                    Toast.makeText(MainActivity.this,"Votre mail ou votre mot de passe est invalide ",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(MainActivity.this,"invalid email or password ",Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                // On complete call either onLoginSuccess or onLoginFailed
+                                onLoginSuccess();
+                                // onLoginFailed();
+                                progressDialog.dismiss();
+                            }
+                        }, 3000);
+
                 break;
 
             case R.id.tvInscriptionLink:
@@ -131,5 +146,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
                 */
         }
+    }
+    public void onLoginSuccess() {
+        bConnexion.setEnabled(true);
+        //finish();
+    }
+
+    public void onLoginFailed() {
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+
+        bConnexion.setEnabled(true);
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String email = etMail.getText().toString();
+        String password = etMotDePasse.getText().toString();
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etMail.setError("enter a valid email address");
+            valid = false;
+        } else {
+            etMail.setError(null);
+        }
+
+        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+            etMotDePasse.setError("between 4 and 10 alphanumeric characters");
+            valid = false;
+        } else {
+            etMotDePasse.setError(null);
+        }
+
+        return valid;
     }
 }
