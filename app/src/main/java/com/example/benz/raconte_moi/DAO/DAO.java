@@ -62,17 +62,7 @@ public class DAO {
 
 
     }
-    public String addKid( Child c){
 
-        // key contient la clé primaire de histoire généré automatiquement
-
-        String key = refData.child("children").push().getKey();
-        refData.child("children").child(key).setValue(c);
-
-        return key;
-
-
-    }
 
     public String addImage(Bitmap bitmap, String path, String idCategorie) {
 
@@ -121,7 +111,7 @@ public class DAO {
 
     }
 
-    public String addChildren(final Child children){
+    public String addChildren(Child children){
 
 
         String key = refData.child("children").push().getKey();
@@ -129,10 +119,6 @@ public class DAO {
 
         return key;
     }
-
-
-
-
 
 
     public String addIllustration(Illustration i) {

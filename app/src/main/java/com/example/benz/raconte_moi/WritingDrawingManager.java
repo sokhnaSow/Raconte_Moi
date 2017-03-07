@@ -233,15 +233,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                         //feedback
                         if (imgSaved != null) {
-                            String CameraFolder="Camera";
-                            File CameraDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString());
-                            File[] files = CameraDirectory.listFiles();
-                            for (File CurFile : files) {
-                                if (CurFile.isFile()) {
-                                    path = CurFile.getPath();
-                                    break;
-                                }
-                            }
+
                             Toast savedToast = Toast.makeText(getApplicationContext(),
                                     "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
                             savedToast.show();
@@ -255,16 +247,6 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                             String keyH = d.addHistory(h);
                             Illustration i = new Illustration(idImg,keyH,text);
                             dao.addIllustration(i);
-
-
-                            /*Bundle bundle = new Bundle();
-                            //Whene user save story, go to Result activity
-                            /*Intent saveIntent=  new Intent(getApplicationContext(), ResultWriting.class);
-                            bundle.putSerializable("view",(DrawingView) drawView);
-                            bundle.putString("text",para.getText().toString());
-                            saveIntent.putExtras(bundle);
-                            startActivity(saveIntent);*/
-                            // cete etape doit etre apres la validation pour avoir le nombre de faut orthographe
                              Intent intent = getIntent();
                             String idChild = intent.getStringExtra("idChild");
                             Writing w = new Writing(idChild,keyH,0,0);

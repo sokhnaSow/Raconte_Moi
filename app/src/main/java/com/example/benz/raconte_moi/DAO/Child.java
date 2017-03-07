@@ -8,15 +8,27 @@ public class Child {
 
     private String nameChild;
     private int age ;
-    private String levelStudy;
-    //private String idUser;
+    private String sex;
+    private String idUser;
 
-    public Child( String nameChild, int age, String levelStudy) {
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+
+
+    public Child( String nameChild, int age, String sex, String idUser) {
 
 
         this.nameChild = nameChild;
         this.age = age;
-        this.levelStudy = levelStudy;
+        this.sex = sex;
+        this.idUser = idUser;
     }
 
     public Child() {
@@ -42,14 +54,14 @@ public class Child {
         this.age = age;
     }
 
-    public String getLevelStudy() {
+    public String getSex() {
 
-        return levelStudy;
+        return sex;
     }
 
-    public void setLevelStudy(String levelStudy) {
+    public void setSex(String Sex) {
 
-        this.levelStudy = levelStudy;
+        this.sex = Sex;
     }
 }
 

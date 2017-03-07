@@ -24,7 +24,7 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
 
         etPrenom = (EditText)findViewById(R.id.etPrenom);
         etAge = (EditText)findViewById(R.id.etAge);
-        etNiveau = (EditText)findViewById(R.id.etNiveau);
+        etNiveau = (EditText)findViewById(R.id.etSex);
         bValider = (Button)findViewById(R.id.bValider);
 
         bValider.setOnClickListener(this);
@@ -38,8 +38,8 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
                 DAO d = new DAO();
                 Intent intent2 = getIntent();
                 String idParent = intent2.getStringExtra("id");
-                Child c = new Child(etPrenom.getText().toString(),Integer.parseInt(etAge.getText().toString()),idParent);
-                 d.addChildren(c);
+                //Child c = new Child(etPrenom.getText().toString(),Integer.parseInt(etAge.getText().toString()),idParent);
+                // d.addChildren(c);
                 startActivity(new Intent(this, PageAccueil.class));
                 break;
         }
