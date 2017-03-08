@@ -75,6 +75,7 @@ public class DAO {
         // store images path on firebase database
         String key = refData.child("Images").push().getKey();
         Image i = new Image("Images/"+path,idCategorie);
+        i.setIdImage(key);
         refData.child("Images").child(key).setValue(i);
         return key;
     }

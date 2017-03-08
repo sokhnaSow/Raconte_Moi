@@ -100,12 +100,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             Log.e("count",""+dataSnapshot.getChildrenCount());
-
-
                                             for(DataSnapshot child : dataSnapshot.getChildren()){
                                                 User u = child.getValue(User.class);
                                                 if(u.getMail().equals(etMail.getText().toString())){
-                                                    Intent i = new Intent(MainActivity.this,PageAccueil.class);
+                                                    Intent i = new Intent(MainActivity.this,ReadingManager.class);
                                                     i.putExtra("id",u.getIdUser());
                                                     i.putExtra("nom",u.getLastnameUser());
                                                     i.putExtra("prenom",u.getFirstnameUser());

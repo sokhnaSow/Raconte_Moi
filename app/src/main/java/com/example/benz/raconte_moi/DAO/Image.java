@@ -6,6 +6,7 @@ package com.example.benz.raconte_moi.DAO;
 
 public class Image {
 
+    private String idImage;
     private String pathImage ;
     private  String idCategory;
 
@@ -33,5 +34,13 @@ public class Image {
 
     public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
+    }
+
+    public String getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(String idImage) {
+        this.idImage = idImage;
     }
 }
