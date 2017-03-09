@@ -12,50 +12,13 @@ add githubPages  https://benzait27.github.io/Raconte_Moi/
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-Raconte-moi est une super application destinée aux nos enfants entre 8 ans et 11 ans qui souhaitent améliorer leur lecture et écriture.
+Raconte-moi est une super application destiné aux nos enfants entre 8 ans et 11 ans qui souhaitent améliorer leur lecture et écriture.
 Cette application présente des activités qui utilisent des outils visuels pour attirer l'attention des enfants et joindre l'outil à l'agréable. Après création d'un compte l'utilisateur pourra choisir différentes activités à savoir la lecture ou l'écriture à travers des images, des animations ou des dessins. Un système de correction sera mis en place pour la correction des fautes grammaticales et d'orthographe. Une évaluation sera mise en place avec un rapport pédagogique afin de permettre aux parents de connaître l'évolution de leurs enfants. 
 
-# Conditions préalables
-Les outils à mettre en place pour le développements de l'application sont: 
-- Android Studio 
-- Github
-- Jenkins 
-- Sonarqube
-- Trello
 
-
-# Pose
-Notre application sera sur Android Studio qui s'utilise assez facilement. Pour lancer le programme il faut cliquer sur un bouton RUN
-
-# Exécution les tests
-git clone https://github.com/benzait27/Raconte_Moi.git
-cd Raconte_Moi
-gradlew clean
-
-si vous avez un probleme de sonarqubeplugin
-assuer que votre variable d'envirenmant JAVA_HOME pointe vers jdk8
-
-Si vous avez un problem de sdk et vous avez pas configurer votre varible environent ANDROID_HOME
-  Telecharger le fichier zip via ce lien audsous
-    https://docs.google.com/uc?export=download&id=0BzCssi5GmG94WndHZkdSLXVJV1E ( l'operation va prendre qlq temps)
-  Decompresé le copier son contenu( sdk et local.properties ) dans la racine du repertoire Raconte_Moi( l'operation va prendre qlq temps
-  Relancer  gradlew clean
-
-# Décomposition en bout à bout des tests
-
-/* Expliquer ce que ces tests tests et pourquoi */
-
-
-# Déploiement 
-Nous pouvons Play Store qui permettra de télécharger sur des périphériques mobiles compatibles avec Android.... A continuer
-
-#Diagramme de classe
-<p align="center">
-  <img src="DiagrammeDeClasse.png" width="400" height="400"/>
-</p>
-
-# Date
-Le 17 Janvier 2017
+Installation Cette application utilise le sdk android 25.0.2 Installez le et placez la variable d'environnement ANDROID_HOME.
+Le lien pour télécharger l'android sdk : https://developer.android.com/studio/index.html .
+Une vidéo tuto pour installer la variable d'environnement : https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjTgvC596PSAhUJaRQKHSNiCm0QtwIIJjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbcOHJwA1FiM&usg=AFQjCNFUhMsxNd6xI5u7PHf5iXyanh71-g
 
 # Auteurs 
 BENZAIT Zakaria
