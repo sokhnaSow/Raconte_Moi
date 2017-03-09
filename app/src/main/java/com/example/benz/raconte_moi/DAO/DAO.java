@@ -1,6 +1,7 @@
 package com.example.benz.raconte_moi.DAO;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,7 +12,10 @@ import android.provider.Settings;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.util.Base64;
+import android.util.Log;
 
+import com.example.benz.raconte_moi.MainActivity;
+import com.example.benz.raconte_moi.PageAccueil;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +32,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by nadia on 17/02/2017.
@@ -43,7 +49,7 @@ public class DAO {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
-
+    HashMap<String, String> titles = new HashMap<String, String>();
 
     // Ajouter histoire
 
@@ -132,22 +138,17 @@ public class DAO {
 
     public Bitmap searchImage(String idImage) {
         //refData.child("history/"+idImage).
-        StorageReference islandRef = storageRef.child("Images/IdKids/5621436a-73d4-4ac7-b8c8-8d05053b74fb.png");
+        StorageReference ref = storageRef.child("Images/IdKids/4200e14b-77dd-4fb2-aa93-88193f3ee6c8.png");
         final Bitmap[] bitmap = new Bitmap[1];
         final long ONE_MEGABYTE = 1024 * 1024;
-        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 bitmap[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                // Data for "images/island.jpg" is returns, use this as needed
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+
             }
         });
-      return bitmap[0];
+        return bitmap[0];
     }
 
     public String addWriting(Writing w) {
@@ -155,6 +156,66 @@ public class DAO {
         refData.child("Writing").child(key).setValue(w);
 
         return key;
+    }
+
+    public HashMap<String, String> getTitlesHistory(final String idKids) {
+       final ArrayList<String> titlesId = new ArrayList<String>();
+        // HashMap<Titles, Keys>
+       // final HashMap<String, String> titles = new HashMap<String, String>();
+        refData.child("Writing").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("count",""+dataSnapshot.getChildrenCount());
+
+
+                for(DataSnapshot writing : dataSnapshot.getChildren()){
+                    Writing w = writing.getValue(Writing .class);
+                    if(w.getIdChild().equals(idKids)){
+                      titlesId.add(w.getIdHistory());
+                        System.out.println(w.getIdHistory());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+        System.out.println();
+        refData.child("history").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("count",""+dataSnapshot.getChildrenCount());
+
+
+                for(DataSnapshot h : dataSnapshot.getChildren()){
+                    String w = h.getKey();
+                    History v = h.getValue(History.class);
+                    for(String t : titlesId){
+                        if(w.equals(t)){
+                            titles.put(w,v.getTitle());
+                            System.out.println(v.getTitle());
+
+                            //return titles;
+                        }
+
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+        //System.out.println(titles.size());
+        return titles;
     }
 
 
