@@ -2,6 +2,8 @@ package com.example.benz.raconte_moi;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,21 +39,22 @@ public class GridViewAdapter extends ArrayAdapter {
             row = inflater.inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
             holder.imageTitle = (TextView) row.findViewById(R.id.text);
-            holder.image = (ImageView) row.findViewById(R.id.image);
             row.setTag(holder);
         } else {
             holder = (ViewHolder) row.getTag();
         }
 
+
+
         ImageItem item = (ImageItem) data.get(position);
         holder.imageTitle.setText(item.getTitle());
-        holder.image.setImageBitmap(item.getImage());
+        //holder.image.setImageBitmap(item.getImage());
         return row;
     }
 
     static class ViewHolder {
         TextView imageTitle;
-        ImageView image;
+        TextView idHistory;
     }
 
     public void setData(ArrayList data) {

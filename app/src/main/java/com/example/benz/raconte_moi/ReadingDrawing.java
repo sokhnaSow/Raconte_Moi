@@ -48,41 +48,41 @@ public class ReadingDrawing extends AppCompatActivity {
         refData = database.getReference();
 
 
-        final String path = getIntent().getStringExtra("path");
+         String title = getIntent().getStringExtra("title");
+         final String idHistory = getIntent().getStringExtra("idHistory");
+
         imageView = (ImageView) findViewById(R.id.image);
-         titleTextView = (TextView) findViewById(R.id.title);
+        titleTextView = (TextView) findViewById(R.id.title);
         l=new ArrayList<String>();
 
+        System.out.println(title);
 
-        StorageReference ref = storageRef.child(path);
-        final long ONE_MEGABYTE = 1024 * 1024;
-        ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                imageView.setImageBitmap(bitmap);
-            }
-        });
-
-
-        refData.child("Images").addListenerForSingleValueEvent(new ValueEventListener() {
+        refData.child("Illustration").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Image i = child.getValue(Image.class);
-                    if(i.getPathImage().equals(path)){
-                        idImage=i.getIdImage();
+                    Illustration u = child.getValue(Illustration.class);
+                    if(u.getIdHistory().equals(idHistory)){
+                        idImage=u.getIdImage();
+                        titleTextView.setText(u.getParagraphe());
                         System.out.println("id; " + idImage);
-                        l.add(idImage);
-
-                        refData.child("Illustration").addListenerForSingleValueEvent(new ValueEventListener() {
+                        refData.child("Images").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                                    Illustration i = child.getValue(Illustration.class);
-                                    if(i.getIdImage().equals(idImage)){
-                                        titleTextView.setText(i.getParagraphe());
-                                        System.out.println(i.getParagraphe());
+                                    Image i = child.getValue(Image.class);
+                                    System.out.println("idimage : "+ idImage);
+                                    System.out.println("getIdimage :" + i.getPathImage());
+                                    if(child.getKey().equals(idImage)){
+                                        StorageReference ref = storageRef.child(i.getPathImage());
+                                        final long ONE_MEGABYTE = 1024 * 1024;
+                                        ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                            @Override
+                                            public void onSuccess(byte[] bytes) {
+                                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                                imageView.setImageBitmap(bitmap);
+                                            }
+                                        });
                                     }
                                 }
                             }

@@ -8,21 +8,13 @@ import android.graphics.Bitmap;
 
 public class ImageItem {
 
-    private Bitmap image;
+
     private String title;
+    private String idHistory;
 
-    public ImageItem(Bitmap image, String title) {
-        super();
-        this.image = image;
+    public ImageItem(String title, String idHistory) {
         this.title = title;
-    }
-
-    public Bitmap getImage() {
-        return image;
-    }
-
-    public void setImage(Bitmap image) {
-        this.image = image;
+        this.idHistory = idHistory;
     }
 
     public String getTitle() {
@@ -33,4 +25,11 @@ public class ImageItem {
         this.title = title;
     }
 
+    public String getIdHistory() {
+        return idHistory;
+    }
+
+    public void setIdHistory(String idHistory) {
+        this.idHistory = idHistory;
+    }
 }

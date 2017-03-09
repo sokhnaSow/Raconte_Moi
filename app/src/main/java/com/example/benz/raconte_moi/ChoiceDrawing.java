@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.benz.raconte_moi.DAO.History;
 import com.example.benz.raconte_moi.DAO.Image;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -49,33 +50,22 @@ public class ChoiceDrawing extends AppCompatActivity {
         storageRef = storage.getReference();
         database = FirebaseDatabase.getInstance();
         refData = database.getReference();
-
-        StorageReference ref = storageRef.child("Images/IdKids/4200e14b-77dd-4fb2-aa93-88193f3ee6c8.png");
-
         gridView = (GridView) findViewById(R.id.gridHistory);
         imageItems = new ArrayList<>();
 
 
-        refData.child("Images").addListenerForSingleValueEvent(new ValueEventListener() {
+        refData.child("history").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.item_history,imageItems);
 
+                gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.item_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    final Image image = child.getValue(Image.class);
-                    StorageReference ref = storageRef.child(image.getPathImage());
-                    final long ONE_MEGABYTE = 1024 * 1024;
-                    ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                        @Override
-                        public void onSuccess(byte[] bytes) {
-                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                            it=new ImageItem(bitmap,image.getPathImage());
-                            imageItems.add(it);
-                            gridAdapter.setData(imageItems);
-                            gridView.setAdapter(gridAdapter);
-                        }
-                    });
-                    i++;
+                    ImageItem it ;
+                    History hist = child.getValue(History.class);
+                    it=new ImageItem(hist.getTitle(),child.getKey());
+                    imageItems.add(it);
+                    gridAdapter.setData(imageItems);
+                    gridView.setAdapter(gridAdapter);
                 }
             }
 
@@ -87,17 +77,15 @@ public class ChoiceDrawing extends AppCompatActivity {
 
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             Intent intent = new Intent(ChoiceDrawing.this, ReadingDrawing.class);
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
                 //Create intent
-                System.out.println(item.getTitle());
-                intent.putExtra("path", item.getTitle());
-                //intent.putExtra("bitmap", item.getImage());
+                intent.putExtra("title", item.getTitle());
+                intent.putExtra("idHistory",item.getIdHistory());
+
                 startActivity(intent);
             }
         });
