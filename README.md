@@ -16,8 +16,12 @@ Raconte-moi est une super application destiné aux nos enfants entre 8 ans et 11
 Cette application présente des activités qui utilisent des outils visuels pour attirer l'attention des enfants et joindre l'outil à l'agréable. Après création d'un compte l'utilisateur pourra choisir différentes activités à savoir la lecture ou l'écriture à travers des images, des animations ou des dessins. Un système de correction sera mis en place pour la correction des fautes grammaticales et d'orthographe. Une évaluation sera mise en place avec un rapport pédagogique afin de permettre aux parents de connaître l'évolution de leurs enfants. 
 
 
-Installation Cette application utilise le sdk android 25.0.2 Installez le et placez la variable d'environnement ANDROID_HOME.
+Cette application utilise le sdk android 25.0.2 Installez le et placez la variable d'environnement ANDROID_HOME.
 Le lien pour télécharger l'android sdk : https://developer.android.com/studio/index.html .
+
+Cette application utilise aussi le JDK 8 Installez le et placez la variable d'environnement JAVA_HOME.
+Le lien pour télécharger l'android JDK : http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html .
+
 Une vidéo tuto pour installer la variable d'environnement : https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjTgvC596PSAhUJaRQKHSNiCm0QtwIIJjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbcOHJwA1FiM&usg=AFQjCNFUhMsxNd6xI5u7PHf5iXyanh71-g
 
 # Auteurs 
