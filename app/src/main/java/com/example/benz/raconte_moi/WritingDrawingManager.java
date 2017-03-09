@@ -373,7 +373,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
             seekDialog.show();
         } else {
             if (view.getId() == R.id.upload_btn) {
-                System.out.println(d.getTitlesHistory(idChild).size());
+
                 final ArrayList<History> items = new ArrayList<History>();
                 final HashMap<String, String> result = new HashMap<String, String>();
                 // get all title history of one kids
@@ -420,7 +420,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                                     result.put(v.getTitle(), w);
 
                                     History hi = new History(v.getTitle());
-                                    //System.out.println(titles[i]);
+
                                     items.add(hi);
                                     i++;
                                     //return titles;
@@ -451,8 +451,6 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                             @Override
                             public void onClick(View v) {
 
-                                System.out.println((items.get(positionItem).getTitle()));
-                                System.out.println(result.get(items.get(positionItem).getTitle()));
                                 FirebaseStorage storage = FirebaseStorage.getInstance();
                                 final StorageReference storageRef = storage.getReference();
                                 refData.child("Illustration").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -509,7 +507,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                                             }
                                         });
 
-                                        Toast.makeText(WritingDrawingManager.this, "Kid successfully added", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(WritingDrawingManager.this, "Upload successfully", Toast.LENGTH_LONG).show();
 
                                         dialog.dismiss();
 
