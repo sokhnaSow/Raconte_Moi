@@ -1,20 +1,13 @@
 package com.example.benz.raconte_moi;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.benz.raconte_moi.DAO.History;
-import com.example.benz.raconte_moi.DAO.Image;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,7 +51,7 @@ public class ChoiceDrawing extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.item_history,imageItems);
+                gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.grid_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     ImageItem it ;
                     History hist = child.getValue(History.class);
