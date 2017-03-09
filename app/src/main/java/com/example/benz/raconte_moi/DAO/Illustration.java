@@ -9,7 +9,7 @@ public class Illustration  {
     private  String idImage;
     private  String idHistory;
     private String paragraphe;
-    private String idEnfant;
+
 
     public Illustration( String idImage,  String idHistory, String paragraphe) {
 

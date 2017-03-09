@@ -11,4 +11,33 @@
     tools:context="com.example.benz.raconte_moi.ReadingManager"
     tools:contentDescription="ReadyActiviy">
 
+    <Button
+        android:text="Histoire Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnImage"
+        android:background="@drawable/categoriimage"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="?attr/actionMenuTextColor"
+        android:layout_marginTop="221dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Dessin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDessin"
+        android:background="@drawable/dessin"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btnImage"
+        android:layout_alignEnd="@+id/btnImage" />
 </RelativeLayout>
