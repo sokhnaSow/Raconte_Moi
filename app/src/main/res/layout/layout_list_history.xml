@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_list_history"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/backgroundlogin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:layout_weight="0.15"
+        android:id="@+id/layoutaddKids">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listHistory" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.00"
+        android:id="@+id/layoutButton">
+        <Button
+            android:id="@+id/okBtn"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="2dp"
+            android:background="@color/green"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:text="Ok"
+            />
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="2dp"
+            android:background="@color/primary_darker"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:text="Cancel"
+            />
+    </LinearLayout>
+</LinearLayout>

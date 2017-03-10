@@ -20,7 +20,12 @@
             android:layout_height="fill_parent"
             android:contentDescription="@string/start_new"
             android:src="@drawable/new_pic" />
-
+        <ImageButton
+            android:id="@+id/upload_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="Upload"
+            android:src="@drawable/upload" />
         <ImageButton
             android:id="@+id/save_btn"
             android:layout_width="wrap_content"

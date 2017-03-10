@@ -9,6 +9,7 @@ package com.example.benz.raconte_moi;
  import android.graphics.Path;
  import android.graphics.PorterDuff;
  import android.graphics.PorterDuffXfermode;
+ import android.graphics.RectF;
  import android.graphics.Shader;
  import android.util.AttributeSet;
  import android.util.TypedValue;
@@ -158,6 +159,15 @@ public class DrawingView extends View implements Serializable {
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
     }
+    public void upload(Bitmap drawableBitmap){
+        startNew();
+        drawCanvas.drawBitmap(drawableBitmap, null, new RectF(0f, 0f, (float) drawableBitmap.getHeight(), (float) drawableBitmap.getHeight()), null);
+        invalidate();
+    }
+     public Canvas getDrawCanvas()
+     {
+         return this.drawCanvas;
+     }
 
     //return current alpha
     public int getPaintAlpha(){

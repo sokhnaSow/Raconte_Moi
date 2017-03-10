@@ -5,8 +5,8 @@ package com.example.benz.raconte_moi.DAO;
  */
 public class Image {
 
-    private String pathImage ;
-    private  String idCategory;
+    private String pathImage;
+    private String idCategory;
 
     public Image(String pathImage, String idCategory) {
 
