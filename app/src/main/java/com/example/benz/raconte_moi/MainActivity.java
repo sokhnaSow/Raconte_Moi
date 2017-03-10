@@ -1,15 +1,11 @@
 package com.example.benz.raconte_moi;
 
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-
 import android.support.v7.app.AppCompatActivity;
-
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,12 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.example.benz.raconte_moi.ClassForTesting.MainPresenter;
-import com.example.benz.raconte_moi.ClassForTesting.MainService;
-import com.example.benz.raconte_moi.ClassForTesting.MainView;
-
-import com.example.benz.raconte_moi.DAO.DaoUser;
 import com.example.benz.raconte_moi.DAO.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     private static final String TAG = "LoginActivity";
@@ -44,10 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refData = database.getReference();
-    DaoUser du;
-    String key;
-    User u;
-    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,23 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvInscriptionLink.setOnClickListener(this);
         tvOubliInfoLink.setOnClickListener(this);
 
-        //for testing
-        presenter = new MainPresenter((MainView) this, new MainService());
-
-
-        /*for(User user : du.getUsers()){
-            if(user.getMail().equals(etMail.getText().toString())){
-                key=user.getIdUser();
-                System.out.println(key);
-            }
-        }*/
-
-
     }
 
     @Override
     public void onClick(View view) {
-        presenter.onMainClicked();
         switch (view.getId()) {
             case R.id.bConnexion:
 
@@ -194,32 +167,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         return valid;
-
-
-        @Override
-        public String getUsername () {
-            return u.getMail();
-        }
-        //public String getUsername() {
-        //  return etMail.getText().toString();
-        //}
-
-        @Override
-        public void showUserNameError ( int idMail){
-
-            etMail.setError(getString(idMail));
-        }
-
-        @Override
-        public String getPwd () {
-
-            return etMotDePasse.getText().toString();
-        }
-
-        @Override
-        public void showPwdError ( int idPwd){
-            etMotDePasse.setError(getString(idPwd));
-
-        }
     }
-
+}

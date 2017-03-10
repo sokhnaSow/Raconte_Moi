@@ -1,13 +1,15 @@
 package com.example.benz.raconte_moi;
 
 
-import com.example.benz.raconte_moi.ClassForTesting.InscriptionPresenter;
 import com.example.benz.raconte_moi.ClassForTesting.InscriptionService;
-import com.example.benz.raconte_moi.ClassForTesting.InscriptionView;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mouna on 05/03/2017.
@@ -15,13 +17,39 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class InscriptionTest {
 
-    @Mock
-    private InscriptionView view;
-    @Mock
-    private InscriptionService service;
-    private InscriptionPresenter presenter;
+    @Test
+    public void shouldLastNameNotIsEmpty() throws Exception {
+        InscriptionService lastName = Mockito.mock(InscriptionService.class);
+        when(lastName.getLastName()).thenReturn(toString());
+        assertEquals(lastName.getLastName(), toString());
 
-    //@Test
-    //public
+    }
+
+    @Test
+    public void shouldFirstNameNotIsEmpty()throws Exception{
+
+        InscriptionService firstName = Mockito.mock(InscriptionService.class);
+        when(firstName.getFirstName()).thenReturn(toString());
+        assertEquals(firstName.getFirstName(), toString());
+
+    }
+
+    @Test
+    public void shouldUserNameNotIsEmpty()throws Exception{
+
+        InscriptionService mail = Mockito.mock(InscriptionService.class);
+        when(mail.getMail()).thenReturn(toString());
+        assertEquals(mail.getMail(), toString());
+
+    }
+
+    @Test
+    public void shouldPwdNameNotIsEmpty()throws Exception{
+
+        InscriptionService pwd = Mockito.mock(InscriptionService.class);
+        when(pwd.getPwd()).thenReturn(toString());
+        assertEquals(pwd.getPwd(), toString());
+
+    }
 
 }
