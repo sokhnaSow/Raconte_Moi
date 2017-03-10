@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.benz.raconte_moi.DAO.History;
@@ -28,6 +29,8 @@ public class ChoiceDrawing extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference refData;
 
+    Button myStories;
+
 
     ImageItem it ;
      ArrayList<ImageItem> imageItems;
@@ -45,7 +48,7 @@ public class ChoiceDrawing extends AppCompatActivity {
         refData = database.getReference();
         gridView = (GridView) findViewById(R.id.gridHistory);
         imageItems = new ArrayList<>();
-
+        myStories= (Button) findViewById(R.id.btnMyStory);
 
         refData.child("history").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,10 +77,17 @@ public class ChoiceDrawing extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
+                Intent intent2 = getIntent();
+                String idChild = intent2.getStringExtra("idChild");
+
                 ImageItem item = (ImageItem) parent.getItemAtPosition(position);
                 //Create intent
                 intent.putExtra("title", item.getTitle());
                 intent.putExtra("idHistory",item.getIdHistory());
+                intent.putExtra("idChild",idChild);
+
+
+
 
                 startActivity(intent);
             }

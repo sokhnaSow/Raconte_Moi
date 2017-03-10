@@ -158,6 +158,14 @@ public class DAO {
         return key;
     }
 
+    public String addReading(Reading r) {
+        String key = refData.child("Reading").push().getKey();
+        refData.child("Reading").child(key).setValue(r);
+
+        return key;
+    }
+
+
     public HashMap<String, String> getTitlesHistory(final String idKids) {
        final ArrayList<String> titlesId = new ArrayList<String>();
         // HashMap<Titles, Keys>

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +38,7 @@ public class GridViewAdapter extends ArrayAdapter {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
-            holder.imageTitle = (Button) row.findViewById(R.id.text);
+            holder.imageTitle = (TextView) row.findViewById(R.id.text);
             row.setTag(holder);
         } else {
             holder = (ViewHolder) row.getTag();
@@ -54,7 +53,7 @@ public class GridViewAdapter extends ArrayAdapter {
     }
 
     static class ViewHolder {
-        Button imageTitle;
+        TextView imageTitle;
         TextView idHistory;
     }
 
