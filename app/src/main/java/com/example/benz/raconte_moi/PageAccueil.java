@@ -88,6 +88,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
         // kids list
         items = new ArrayList<Child>();
         itemsKeys = new ArrayList<String>();
+
         // get all kids of id parent
         refData.child("children").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -141,12 +142,12 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        System.out.println(itemsKeys.get(positionItem));
                         items.remove(positionItem);
-                        System.out.println(positionItem);
+                        itemsKeys.remove(positionItem);
                         itemsAdapter.notifyDataSetChanged();
                         Toast.makeText(PageAccueil.this, "Kid deleted", Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-
                     }
                 });
                 alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -166,6 +167,10 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
                 return true;
             case R.id.seeReport_item:
                 Toast.makeText(PageAccueil.this, "not implemented yet", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(PageAccueil.this, Report.class);
+                intent.putExtra("idChild", itemsKeys.get(positionItem));
+                System.out.println(itemsKeys.get(positionItem));
+                startActivity(intent);
                 return true;
             default:
                 return super.onContextItemSelected(item);

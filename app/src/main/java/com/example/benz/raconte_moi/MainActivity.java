@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         etMail = (EditText)findViewById(R.id.etNomUtilisateur);
          etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
         bConnexion = (Button)findViewById(R.id.bConnexion);

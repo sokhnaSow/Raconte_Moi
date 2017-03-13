@@ -10,6 +10,7 @@ public class Writing {
     private String idHistory;
     private int nbrError;
     private int score;
+    private boolean valide;
 
 
     public Writing() {
@@ -21,6 +22,14 @@ public class Writing {
         this.idHistory = idHistory;
         this.nbrError = nbrError;
         this.score = score;
+    }
+
+    public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
     }
 
     public String getIdChild() {

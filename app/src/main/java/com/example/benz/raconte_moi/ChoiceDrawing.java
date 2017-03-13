@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.benz.raconte_moi.DAO.History;
+import com.example.benz.raconte_moi.DAO.Writing;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,19 +51,44 @@ public class ChoiceDrawing extends AppCompatActivity {
         imageItems = new ArrayList<>();
         myStories= (Button) findViewById(R.id.btnMyStory);
 
-        refData.child("history").addListenerForSingleValueEvent(new ValueEventListener() {
+        final ArrayList<String> idstories= new ArrayList<>();
+
+        refData.child("Writing").addListenerForSingleValueEvent(new ValueEventListener() {
+            ImageItem it ;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.grid_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    ImageItem it ;
-                    History hist = child.getValue(History.class);
-                    it=new ImageItem(hist.getTitle(),child.getKey());
-                    imageItems.add(it);
-                    gridAdapter.setData(imageItems);
-                    gridView.setAdapter(gridAdapter);
+                    Writing w = child.getValue(Writing.class);
+                    if (w.isValide()) {
+                        idstories.add(w.getIdHistory());
+                    }
                 }
+
+                refData.child("history").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot child : dataSnapshot.getChildren()) {
+                            for (String s : idstories) {
+                                History h = child.getValue(History.class);
+                                if (child.getKey().equals(s)) {
+                                    it = new ImageItem(h.getTitle(), child.getKey());
+                                    imageItems.add(it);
+                                    gridAdapter.setData(imageItems);
+                                    gridView.setAdapter(gridAdapter);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
 
             @Override
@@ -72,7 +98,7 @@ public class ChoiceDrawing extends AppCompatActivity {
         });
 
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             Intent intent = new Intent(ChoiceDrawing.this, ReadingDrawing.class);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
@@ -90,6 +116,19 @@ public class ChoiceDrawing extends AppCompatActivity {
 
 
                 startActivity(intent);
+            }
+        });
+        myStories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent2 = getIntent();
+                String idChild = intent2.getStringExtra("idChild");
+
+                Intent intent = new Intent(ChoiceDrawing.this, ChoiceMyStorie.class);
+                intent.putExtra("idChild",idChild);
+                startActivity(intent);
+
             }
         });
 
