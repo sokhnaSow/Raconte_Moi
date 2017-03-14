@@ -32,11 +32,7 @@ public class ChoiceDrawing extends AppCompatActivity {
 
     Button myStories;
 
-
-    ImageItem it ;
      ArrayList<ImageItem> imageItems;
-    int i = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

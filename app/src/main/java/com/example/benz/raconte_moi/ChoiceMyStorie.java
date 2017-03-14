@@ -30,11 +30,7 @@ public class ChoiceMyStorie extends AppCompatActivity {
     StorageReference storageRef;
     FirebaseDatabase database;
     DatabaseReference refData;
-
     Button myStories;
-
-
-    ImageItem it ;
     ArrayList<ImageItem> imageItems;
 
 

@@ -31,9 +31,6 @@ public class ChoiseMyImagestorie extends AppCompatActivity {
     DatabaseReference refData;
 
     Button myStories;
-
-
-    ImageItem it ;
     ArrayList<ImageItem> imageItems;
 
 
@@ -62,7 +59,7 @@ public class ChoiseMyImagestorie extends AppCompatActivity {
                 gridAdapter = new GridViewAdapter(ChoiseMyImagestorie.this, R.layout.grid_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Writing w = child.getValue(Writing.class);
-                    if (w.isValide() && !(w.getCategorie().equals("Drawing"))) {
+                    if (w.isValide() && !(w.getCategorie().equals("Drawing")) && w.getIdChild().equals(idChild)) {
                         idstories.add(w.getIdHistory());
                     }
                 }
