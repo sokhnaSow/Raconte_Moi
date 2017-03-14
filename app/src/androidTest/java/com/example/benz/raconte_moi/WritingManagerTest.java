@@ -24,12 +24,12 @@ public class WritingManagerTest {
     @Test
     public void testDrawingBtn() throws  Exception {
         onView(withId(R.id.drawingBtn)).perform(click());
-        onView(withId(R.id.save_btn)).check(matches(isDisplayed()));
+        onView(withId(R.id.activity_writing_drawing_manager)).check(matches(isDisplayed()));
     }
     @Test
     public void testImageBtn() throws  Exception {
         onView(withId(R.id.imageBtn)).perform(click());
-        onView(withId(R.id.grid)).check(matches(isDisplayed()));
+        onView(withId(R.id.android_coordinator_layout)).check(matches(isDisplayed()));
 
     }
 }

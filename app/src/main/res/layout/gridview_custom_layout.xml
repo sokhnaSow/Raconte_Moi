@@ -35,11 +35,11 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <ImageView
+            <ImageButton
+                android:layout_width="match_parent"
+                android:src="@mipmap/ic_launcher"
                 android:id="@+id/gridview_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </com.andexert.library.RippleView>

@@ -18,12 +18,7 @@ package com.example.benz.raconte_moi;
  import java.io.Serializable;
 
 /**
- * This is demo code to accompany the Mobiletuts+ tutorial series:
- * - Android SDK: Create a Drawing App
- * - extended for follow-up tutorials on using patterns and opacity
- *
- * Sue Smith
- * August 2013 / September 2013
+
  *
  */
 public class DrawingView extends View implements Serializable {
@@ -119,7 +114,7 @@ public class DrawingView extends View implements Serializable {
         else{
             //pattern
             int patternID = getResources().getIdentifier(
-                    newColor, "drawable", "com.example.drawingfun");
+                    newColor, "drawable", "com.example.benz.raconte_moi");
             //decode
             Bitmap patternBMP = BitmapFactory.decodeResource(getResources(), patternID);
             //create shader

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -102,11 +103,11 @@ public class WritingImageManager extends AppCompatActivity {
                 grid = new View(mContext);
                 grid = inflater.inflate(R.layout.gridview_custom_layout, null);
                 TextView textView = (TextView) grid.findViewById(R.id.gridview_text);
-                ImageView imageView = (ImageView)grid.findViewById(R.id.gridview_image);
+                ImageButton imageView = (ImageButton)grid.findViewById(R.id.gridview_image);
                 textView.setText(string[p]);
                 final String cat = string[p];
                 imageView.setImageResource(Imageid[p]);
-                grid.setOnClickListener(new View.OnClickListener() {
+                imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     /// go to activity manager
                     public void onClick(View view) {

@@ -106,7 +106,6 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("count", "" + dataSnapshot.getChildrenCount());
-
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Child u = child.getValue(Child.class);
                     if (u.getIdUser().toString().equals(idUser)) {
@@ -327,6 +326,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
                                 Log.e("count", "" + dataSnapshot.getChildrenCount());
 
                                 for (DataSnapshot child : dataSnapshot.getChildren()) {
+                                   // child.get
                                     Child u = child.getValue(Child.class);
                                     if (u.getIdUser().toString().equals(idUser)) {
                                         items.add(u);
@@ -425,9 +425,10 @@ public void onNothingSelected(AdapterView<?> arg0) {
                     public void onClick(View v) {
                         d = new DAO();
                         Child c = new Child(etPrenom.getText().toString(), Integer.parseInt(etAge.getText().toString()), item, idUser);
-                        d.addChildren(c);
+                        String key = d.addChildren(c);
                         Toast.makeText(PageAccueil.this, "Kid successfully added", Toast.LENGTH_LONG).show();
                         items.add(c);
+                        itemsKeys.add(key);
                         itemsAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
