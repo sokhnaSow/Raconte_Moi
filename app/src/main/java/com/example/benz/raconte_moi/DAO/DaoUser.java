@@ -17,6 +17,14 @@ public class DaoUser {
 
     List<User> users = new ArrayList<User>();
 
+    public DaoUser(FirebaseDatabase database) {
+
+        this.database = database;
+    }
+
+    public DaoUser(){
+
+    }
 
 
     public String addUser(User user){

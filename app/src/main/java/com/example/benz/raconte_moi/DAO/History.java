@@ -24,5 +24,4 @@ public class History {
         this.title = title;
     }
 
-
 }
