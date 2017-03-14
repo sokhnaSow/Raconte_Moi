@@ -1,6 +1,6 @@
 package com.example.benz.raconte_moi;
 
-import com.example.benz.raconte_moi.ClassForTesting.AuthService;
+import com.example.benz.raconte_moi.DAO.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,23 +20,25 @@ public class AuthTest {
 
     @Test
     public void shouldUserNameNotIsEmpty() throws Exception {
+
         //create mock
-        AuthService username = Mockito.mock(AuthService.class);
+        User userName = Mockito.mock(User.class);
 
         //define return value for method getUsername()
-        when(username.getUsername()).thenReturn(toString());
+        when(userName.getMail()).thenReturn(toString());
 
         // use mock in test
-        assertEquals(username.getUsername(), toString());
+        assertEquals(userName.getMail(),toString());
+
 
     }
 
     @Test
     public void shouldPwdNameNotIsEmpty()throws Exception{
 
-        AuthService pwd = Mockito.mock(AuthService.class);
-        when(pwd.getPwd()).thenReturn(toString());
-        assertEquals(pwd.getPwd(), toString());
+        User pwd = Mockito.mock(User.class);
+        when(pwd.toString()).thenReturn(toString());
+        assertEquals(pwd.toString(),toString());
 
     }
 }

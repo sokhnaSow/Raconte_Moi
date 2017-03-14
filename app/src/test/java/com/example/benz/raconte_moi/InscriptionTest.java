@@ -1,7 +1,7 @@
 package com.example.benz.raconte_moi;
 
 
-import com.example.benz.raconte_moi.ClassForTesting.InscriptionService;
+import com.example.benz.raconte_moi.DAO.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,37 +18,37 @@ import static org.mockito.Mockito.when;
 public class InscriptionTest {
 
     @Test
-    public void shouldLastNameNotIsEmpty() throws Exception {
-        InscriptionService lastName = Mockito.mock(InscriptionService.class);
-        when(lastName.getLastName()).thenReturn(toString());
-        assertEquals(lastName.getLastName(), toString());
+    public void shouldFirstNameNotIsEmpty() throws Exception {
+
+        User firstname = Mockito.mock(User.class);
+        when(firstname.getFirstnameUser()).thenReturn(toString());
+        assertEquals(firstname.getFirstnameUser(),toString());
+    }
+
+    @Test
+    public void shouldLastNameNotIsEmpty()throws Exception{
+
+        User lastName = Mockito.mock(User.class);
+        when(lastName.getLastnameUser()).thenReturn(toString());
+        assertEquals(lastName.getLastnameUser(),toString());
 
     }
 
     @Test
-    public void shouldFirstNameNotIsEmpty()throws Exception{
+    public void shouldMailNotIsEmpty() throws Exception {
 
-        InscriptionService firstName = Mockito.mock(InscriptionService.class);
-        when(firstName.getFirstName()).thenReturn(toString());
-        assertEquals(firstName.getFirstName(), toString());
-
-    }
-
-    @Test
-    public void shouldUserNameNotIsEmpty()throws Exception{
-
-        InscriptionService mail = Mockito.mock(InscriptionService.class);
+        User mail = Mockito.mock(User.class);
         when(mail.getMail()).thenReturn(toString());
         assertEquals(mail.getMail(), toString());
 
     }
 
     @Test
-    public void shouldPwdNameNotIsEmpty()throws Exception{
+    public void shouldIdUserIsCorrect() throws Exception {
 
-        InscriptionService pwd = Mockito.mock(InscriptionService.class);
-        when(pwd.getPwd()).thenReturn(toString());
-        assertEquals(pwd.getPwd(), toString());
+        User idUser = Mockito.mock(User.class);
+        when(idUser.getIdUser()).thenReturn(toString());
+        assertEquals(idUser.getIdUser(), toString());
 
     }
 

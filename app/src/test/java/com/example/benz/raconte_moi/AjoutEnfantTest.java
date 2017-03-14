@@ -1,14 +1,14 @@
 package com.example.benz.raconte_moi;
 
-import com.example.benz.raconte_moi.ClassForTesting.AjoutEnfantService;
+import com.example.benz.raconte_moi.DAO.Child;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.when;
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by mouna on 05/03/2017.
@@ -19,7 +19,7 @@ public class AjoutEnfantTest {
 
     @Test
     public void shouldNameChildNotIsEmpty() throws Exception {
-        AjoutEnfantService nameChild = Mockito.mock(AjoutEnfantService.class);
+        Child nameChild = Mockito.mock(Child.class);
         when(nameChild.getNameChild()).thenReturn(toString());
         assertEquals(nameChild.getNameChild(),toString());
     }
@@ -31,19 +31,21 @@ public class AjoutEnfantTest {
         assertEquals(age.getAge(),Integer.parseInt(toString()));
     }
 */
+
     @Test
     public void shouldSexNotIsEmpty() throws Exception {
-        AjoutEnfantService sex = Mockito.mock(AjoutEnfantService.class);
-        when(sex.getSex()).thenReturn(toString());
-        assertEquals(sex.getSex(),toString());
+        Child sexChild = Mockito.mock(Child.class);
+        when(sexChild.getSex()).thenReturn(toString());
+        assertEquals(sexChild.getSex(),toString());
     }
 
 
     @Test
     public void shouldIdUserNotIsExist() throws Exception {
-        AjoutEnfantService idUser = Mockito.mock(AjoutEnfantService.class);
+        Child idUser = Mockito.mock(Child.class);
         when(idUser.getIdUser()).thenReturn(toString());
         assertEquals(idUser.getIdUser(),toString());
+
     }
 
 }
