@@ -20,19 +20,21 @@ public class ActivityManager extends AppCompatActivity implements View.OnClickLi
     }
     @Override
     public void onClick(View view) {
+        Intent intent2 = getIntent();
+        String idChild = intent2.getStringExtra("idChild");
+
         switch (view.getId()){
             case R.id.writingBtn:
-                Intent intent2 = getIntent();
-                String idChild = intent2.getStringExtra("idChild");
 
                 Intent intent = new Intent(this, WritingManager.class);
                 intent.putExtra("idChild",idChild);
                 startActivity(intent);
-
                 break;
             case R.id.readingBtn:
 
-                startActivity(new Intent(this, ReadingManager.class));
+                Intent intent1 = new Intent(this, ReadingManager.class);
+                intent1.putExtra("idChild",idChild);
+                startActivity(intent1);
                 break;
         }
     }

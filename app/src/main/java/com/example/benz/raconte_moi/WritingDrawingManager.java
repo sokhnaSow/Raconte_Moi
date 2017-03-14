@@ -1,7 +1,6 @@
 
         package com.example.benz.raconte_moi;
 
-
         import android.app.Dialog;
         import android.content.Context;
         import android.content.DialogInterface;
