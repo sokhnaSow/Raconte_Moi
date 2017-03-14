@@ -1,97 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/lib/com.example.jaisonjoseph.newsclient"
+<android.support.v4.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/lib/com.example.jaisonjoseph.newsclient"
     xmlns:app2="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_page_accueil"
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/backgroundlogin"
     tools:context="com.example.benz.raconte_moi.PageAccueil">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:id="@+id/drawer_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgroundlogin">
+
+        <!-- The navigation drawer -->
+
 
         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="269dp"
+        android:orientation="vertical">
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            android:layout_weight="0.25"
-            android:id="@+id/layoutParent">
+            android:layout_height="wrap_content"
+            android:id="@+id/tePrenomP"
+            android:textColor="@color/white"
+            android:drawableLeft="@mipmap/account"
+            android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:id="@+id/tePrenomP"
-                android:text="Prenom Parent"
-                android:textColor="@color/white"
-                android:drawableLeft="@mipmap/account"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:id="@+id/teNomP"
-                android:text="Nom Parent"
-                android:drawableLeft="@drawable/nom"
-                android:textColor="@color/white"
-                android:layout_weight="1" />
-
-            <TextView
-                android:text="mail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/mail"
-                android:id="@+id/teMail"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <RelativeLayout
+        <TextView
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/layoutKids"
-            android:weightSum="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/teNomP"
+            android:drawableLeft="@drawable/nom"
+            android:textColor="@color/white"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/mail"
+            android:id="@+id/teMail"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layoutKids"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/listKids"
+        android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.40">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:clickable="true"
+            app:layout_anchorGravity="bottom|right|end"
+            app:fabSize="normal"
+            android:src="@drawable/add1"
+            android:id="@+id/bAjoutEnfant"
+            app2:backgroundTint="@android:color/holo_orange_light"
+            app2:rippleColor="@android:color/holo_orange_light"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="11dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/listKids"
-            android:layout_marginStart="24dp"
-            android:layout_height="80dp"
-            android:layout_weight="0.40">
+            android:layout_toEndOf="@+id/listKids" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:clickable="true"
-                app:layout_anchorGravity="bottom|right|end"
-                app:fabSize="normal"
-                android:src="@drawable/add1"
-                android:id="@+id/bAjoutEnfant"
-                app2:backgroundTint="@android:color/holo_orange_light"
-                app2:rippleColor="@android:color/holo_orange_light"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="11dp"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/listKids" />
-
-            <ListView
-                android:layout_height="wrap_content"
-                android:id="@+id/listKids"
-                android:layout_alignParentStart="true"
-                android:layout_width="260dp" />
-
-        </RelativeLayout>
+        <ListView
+            android:layout_height="wrap_content"
+            android:id="@+id/listKids"
+            android:layout_alignParentStart="true"
+            android:layout_width="match_parent"
+            android:layout_weight="0.93" />
 
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>
+
+    <ListView
+        android:id="@+id/navdrawer"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:drawSelectorOnTop="false"
+        android:scrollbars="horizontal"
+        android:layout_width="200dp">
+    </ListView>
+
+</android.support.v4.widget.DrawerLayout>

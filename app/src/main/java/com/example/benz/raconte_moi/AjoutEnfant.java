@@ -4,11 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.benz.raconte_moi.DAO.Child;
 import com.example.benz.raconte_moi.DAO.DAO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AjoutEnfant extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,10 +28,9 @@ public class AjoutEnfant extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_enfant);
 
-        etPrenom = (EditText)findViewById(R.id.etPrenom);
-        etAge = (EditText)findViewById(R.id.etAge);
-        etNiveau = (EditText)findViewById(R.id.etSex);
-        bValider = (Button)findViewById(R.id.bValider);
+        etPrenom = (EditText) findViewById(R.id.etPrenom);
+        etAge = (EditText) findViewById(R.id.etAge);
+        bValider = (Button) findViewById(R.id.bValider);
 
         bValider.setOnClickListener(this);
     }
