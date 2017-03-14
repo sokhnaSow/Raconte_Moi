@@ -5,4 +5,10 @@ package com.example.benz.raconte_moi.ClassForTesting;
  */
 
 public interface AjoutEnfantPresenter {
+
+    String getNameChild();
+    int getAge();
+    String getSex();
+    String getIdUser();
+
 }

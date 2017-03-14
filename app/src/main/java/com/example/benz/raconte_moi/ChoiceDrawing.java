@@ -19,17 +19,16 @@ import java.util.ArrayList;
 
 public class ChoiceDrawing extends AppCompatActivity {
 
-    private GridView gridView;
+    public GridView gridView;
 
-    FirebaseStorage storage;
+    public FirebaseStorage storage;
     //StorageReference storageRef;
-    //FirebaseDatabase database; 
-    DatabaseReference refData;
+    //FirebaseDatabase database;
+    public DatabaseReference refData;
 
-
-    ImageItem it ;
-    ArrayList<ImageItem> imageItems;
-    int i = 0;
+    public ImageItem it ;
+    public ArrayList<ImageItem> imageItems;
+    //int i = 0;
 
 
     @Override
@@ -63,6 +62,9 @@ public class ChoiceDrawing extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                /*
+                Code....
+                 */
 
             }
         });

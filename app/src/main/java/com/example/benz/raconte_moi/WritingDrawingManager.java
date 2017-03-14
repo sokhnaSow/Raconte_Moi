@@ -3,69 +3,54 @@
 
 
         import android.app.Dialog;
-        import android.content.Context;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.graphics.Bitmap;
-        import android.graphics.BitmapFactory;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.Paint;
-        import android.graphics.Picture;
-        import android.graphics.PorterDuff;
-        import android.graphics.RectF;
-        import android.net.Uri;
-        import android.os.Environment;
-        import android.provider.MediaStore;
-        import android.provider.Settings;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.ContextMenu;
-        import android.view.LayoutInflater;
-        import android.view.Menu;
-        import android.view.MenuInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ImageButton;
-        import android.widget.LinearLayout;
-        import android.widget.ListView;
-        import android.widget.SeekBar;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.benz.raconte_moi.DAO.DAO;
+import com.example.benz.raconte_moi.DAO.History;
+import com.example.benz.raconte_moi.DAO.Illustration;
+import com.example.benz.raconte_moi.DAO.Image;
+import com.example.benz.raconte_moi.DAO.Writing;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-        import com.bumptech.glide.Glide;
-        import com.example.benz.raconte_moi.DAO.Child;
-        import com.example.benz.raconte_moi.DAO.DAO;
-        import com.example.benz.raconte_moi.DAO.History;
-        import com.example.benz.raconte_moi.DAO.Illustration;
-        import com.example.benz.raconte_moi.DAO.Image;
-        import com.example.benz.raconte_moi.DAO.Writing;
-        import com.google.android.gms.tasks.OnSuccessListener;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
-        import com.google.firebase.storage.FirebaseStorage;
-        import com.google.firebase.storage.StorageReference;
-
-        import java.io.ByteArrayOutputStream;
-        import java.io.File;
-        import java.net.URI;
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.Objects;
-        import java.util.UUID;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class WritingDrawingManager extends AppCompatActivity implements View.OnClickListener {
-    View rowView = null;
-    final Dialog dialog = null;
+    public View rowView = null;
+    //final Dialog dialog = null;
 
     //custom drawing view
     private DrawingView drawView;
@@ -74,9 +59,9 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
     //sizes
     private float smallBrush, mediumBrush, largeBrush;
     private DAO d;
-    String idChild = null;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference refData = database.getReference();
+    public String idChild = null;
+    public FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public DatabaseReference refData = database.getReference();
     private int positionItem;
 
     @Override
@@ -144,7 +129,8 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
         drawView.setPaintAlpha(100);
         drawView.setBrushSize(drawView.getLastBrushSize());
 
-        if (view != currPaint) {
+        //if (view != currPaint) {
+        if (!view.equals(currPaint)){
             ImageButton imgView = (ImageButton) view;
             String color = view.getTag().toString();
             drawView.setColor(color);
@@ -353,10 +339,16 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
+                    /*
+                    ******Code*****
+                     */
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
+                    /*
+                    *****Code******
+                     */
                 }
 
             });
@@ -400,6 +392,9 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+                        /*
+                        *****Code******
+                         */
 
                     }
 

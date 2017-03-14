@@ -27,18 +27,15 @@ import java.util.HashMap;
 
 public class DAO {
 
-
-
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference refData = database.getReference();
-    HashMap<String, String> titles = new HashMap<String, String>();
+    public FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public DatabaseReference refData = database.getReference();
+    public HashMap<String, String> titles = new HashMap<String, String>();
 
     // Ajouter histoire
 
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef = storage.getReference();
-    static  Bitmap b = null;
+    public FirebaseStorage storage = FirebaseStorage.getInstance();
+    public StorageReference storageRef = storage.getReference();
+    //static  Bitmap b = null;
 
     public String addHistory(final History history){
 
@@ -92,6 +89,9 @@ public class DAO {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                /*
+                *****Code******
+                 */
 
             }
 

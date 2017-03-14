@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class ReadingManager extends AppCompatActivity {
 
-    Button btnImage, btnDrawing;
+    public Button btnImage, btnDrawing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

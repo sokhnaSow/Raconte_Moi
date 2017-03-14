@@ -27,13 +27,13 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private static final String TAG = "LoginActivity";
-    EditText etMail, etMotDePasse;
-    Button bConnexion;
-    TextView tvInscriptionLink, tvOubliInfoLink;
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference refData = database.getReference();
+    public static final String TAG = "LoginActivity";
+    public EditText etMail, etMotDePasse;
+    public Button bConnexion;
+    public TextView tvInscriptionLink, tvOubliInfoLink;
+    public FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    public FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public DatabaseReference refData = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d(TAG, "Login");
                 if (!validate()) {
-                    if (!validate()) {
                         onLoginFailed();
                         return;
-                    }
                 }
                 bConnexion.setEnabled(false);
                 final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.AppTheme_Dark_Dialog);
@@ -101,7 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
-
+                                            /*
+                                            Code.......
+                                             */
                                         }
 
                                     });
@@ -127,11 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tvInscriptionLink:
                 startActivity(new Intent(this, Inscription.class));
                 break;
-
-            /* info à traiter
-            case R.id.tvOubliInfoLink:
-                break;
-                */
         }
     }
 
