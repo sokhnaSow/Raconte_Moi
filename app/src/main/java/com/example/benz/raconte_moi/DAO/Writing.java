@@ -62,6 +62,7 @@ public class Writing {
         this.score = score;
     }
 
+
     public boolean isValide() {
         return valide;
     }
@@ -86,3 +87,4 @@ public class Writing {
         this.date = date;
     }
 }
+

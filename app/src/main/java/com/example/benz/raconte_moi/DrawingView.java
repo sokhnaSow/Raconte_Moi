@@ -41,7 +41,7 @@ public class DrawingView extends View implements Serializable {
     //brush sizes
     private float brushSize, lastBrushSize;
     //erase flag
-    private boolean erase=false;
+    //private boolean erase=false;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -149,6 +149,7 @@ public class DrawingView extends View implements Serializable {
 
     //set erase true or false
     public void setErase(boolean isErase){
+        boolean erase = false;
         erase=isErase;
         if(erase) drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         else drawPaint.setXfermode(null);

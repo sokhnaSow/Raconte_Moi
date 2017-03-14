@@ -1,8 +1,8 @@
 package com.example.benz.raconte_moi;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.benz.raconte_moi.DAO.DAO;
+
 import com.example.benz.raconte_moi.DAO.Illustration;
 import com.example.benz.raconte_moi.DAO.Image;
 import com.example.benz.raconte_moi.DAO.Reading;
@@ -26,16 +27,19 @@ import com.google.firebase.storage.StorageReference;
 
 public class ReadingDrawing extends AppCompatActivity {
 
-    String idImage ;
-    FirebaseStorage storage;
-    StorageReference storageRef;
-    FirebaseDatabase database;
-    DatabaseReference refData;
-    ImageView imageView;
-    TextView titleTextView;
+
     Button finish ;
     DAO D ;
     String idChild;
+    public String idImage ;
+    public FirebaseStorage storage;
+    public StorageReference storageRef;
+    public FirebaseDatabase database;
+    public DatabaseReference refData;
+    public ImageView imageView;
+    public TextView titleTextView;
+    public ArrayList<String> l ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +116,9 @@ public class ReadingDrawing extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                /*
+                ****Code*****
+                 */
 
             }
 

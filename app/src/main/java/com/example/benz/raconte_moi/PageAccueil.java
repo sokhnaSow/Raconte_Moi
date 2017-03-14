@@ -124,6 +124,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
 
     }
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
@@ -211,6 +212,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
         }
     }
+
 
 
 
