@@ -88,6 +88,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
         // kids list
         items = new ArrayList<Child>();
         itemsKeys = new ArrayList<String>();
+
         // get all kids of id parent
         refData.child("children").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -116,9 +117,7 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
         listView.setAdapter(itemsAdapter);
         registerForContextMenu(listView);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
 
         // reference to listviex
 
@@ -142,12 +141,12 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        System.out.println(itemsKeys.get(positionItem));
                         items.remove(positionItem);
-                        System.out.println(positionItem);
+                        itemsKeys.remove(positionItem);
                         itemsAdapter.notifyDataSetChanged();
                         Toast.makeText(PageAccueil.this, "Kid deleted", Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-
                     }
                 });
                 alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -167,6 +166,10 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
                 return true;
             case R.id.seeReport_item:
                 Toast.makeText(PageAccueil.this, "not implemented yet", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(PageAccueil.this, Report.class);
+                intent.putExtra("idChild", itemsKeys.get(positionItem));
+                System.out.println(itemsKeys.get(positionItem));
+                startActivity(intent);
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -213,44 +216,6 @@ public class PageAccueil extends AppCompatActivity implements View.OnClickListen
 
 
 
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("PageAccueil Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
-    // override methode for contextuel
 
 
     // adtateur paersonalizer

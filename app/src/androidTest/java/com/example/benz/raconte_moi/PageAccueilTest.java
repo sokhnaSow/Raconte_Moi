@@ -21,10 +21,5 @@ public class PageAccueilTest {
     public ActivityTestRule<PageAccueil> m = new ActivityTestRule<PageAccueil>(PageAccueil.class);
     @Test
     public void useAppContext() throws  Exception {
-        //onView(withId(R.id.bActivite)).perform(click());
-        onView(withId(R.id.writingBtn)).check(matches(isDisplayed()));
-
-
-
     }
 }
