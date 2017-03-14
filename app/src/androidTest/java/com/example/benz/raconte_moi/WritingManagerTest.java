@@ -29,8 +29,7 @@ public class WritingManagerTest {
     @Test
     public void testImageBtn() throws  Exception {
         onView(withId(R.id.imageBtn)).perform(click());
-        onView(withId(R.id.activity_writing_drawing_manager)).check(matches(isDisplayed()));
-
+        onView(withId(R.id.grid)).check(matches(isDisplayed()));
 
     }
 }
