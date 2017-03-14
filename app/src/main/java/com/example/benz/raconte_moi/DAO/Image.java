@@ -7,12 +7,10 @@ package com.example.benz.raconte_moi.DAO;
 public class Image {
 
     private String pathImage;
-    private String idCategory;
 
-    public Image(String pathImage, String idCategory) {
+    public Image(String pathImage) {
 
         this.pathImage = pathImage;
-        this.idCategory = idCategory;
     }
 
     public Image() {
@@ -27,11 +25,4 @@ public class Image {
         this.pathImage = pathImage;
     }
 
-    public String getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(String idCategory) {
-        this.idCategory = idCategory;
-    }
 }

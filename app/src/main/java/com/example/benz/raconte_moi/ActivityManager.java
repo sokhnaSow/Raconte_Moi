@@ -31,6 +31,7 @@ public class ActivityManager extends AppCompatActivity implements View.OnClickLi
 
                 break;
             case R.id.readingBtn:
+
                 startActivity(new Intent(this, ReadingManager.class));
                 break;
         }

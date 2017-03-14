@@ -34,8 +34,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ChoiceDrawing"></activity>
-        <activity android:name=".ReadingDrawing"></activity>
+        <activity android:name=".ChoiceDrawing" />
+        <activity android:name=".ReadingDrawing" />
+        <activity android:name=".WritingFromCategories"></activity>
     </application>
 
 </manifest>

@@ -39,7 +39,7 @@
         android:paddingLeft="0dp"
         android:drawablePadding="5dp"
         android:hint="Nom"
-        android:textColorHint="#999"
+        android:textColorHint="@color/white"
         />
     </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +62,7 @@
         android:paddingLeft="0dp"
         android:drawablePadding="5dp"
         android:hint="Prenom"
-        android:textColorHint="#999" />
+        android:textColorHint="@color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -82,7 +82,7 @@
         android:textColor="#FFF"
         android:paddingLeft="0dp"
         android:drawablePadding="5dp"
-        android:textColorHint="#999"
+        android:textColorHint="@color/white"
         android:hint="Email"
         />
     </android.support.design.widget.TextInputLayout>
@@ -103,12 +103,13 @@
             android:textColor="#FFF"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
-            android:textColorHint="#999"
+            android:textColorHint="@color/white"
             android:drawableLeft="@mipmap/lock"
             android:ems="10"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/bInscription"
         android:text="Enregistrer"
         android:layout_width="181dp"

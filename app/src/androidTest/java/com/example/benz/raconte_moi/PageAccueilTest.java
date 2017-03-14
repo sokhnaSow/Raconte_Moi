@@ -26,6 +26,5 @@ public class PageAccueilTest {
         onView(withId(R.id.writingBtn)).check(matches(isDisplayed()));
 
 
-
     }
 }

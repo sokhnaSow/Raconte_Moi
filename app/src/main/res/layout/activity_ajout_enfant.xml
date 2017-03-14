@@ -26,10 +26,10 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
-            android:textColorHint="#999"
+            android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:drawableLeft="@mipmap/account"
-            android:layout_weight="1" />
+            android:layout_weight="0.33" />
 
         <EditText
             android:layout_width="match_parent"
@@ -40,12 +40,13 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
-            android:textColorHint="#999"
+            android:textColorHint="@color/white"
             android:drawableLeft="@drawable/age"
             android:textColor="@color/white"
-            android:layout_weight="1" />
+            android:layout_weight="0.29" />
 
-        <EditText
+        <Spinner
+            android:id="@+id/spinnerSex"
             android:hint="sexe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,9 +55,8 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
-            android:textColorHint="#999"
-            android:id="@+id/etSex"
-            android:layout_weight="1" />
+            android:textColorHint="@color/white"
+            android:layout_weight="0.29" />
 
     </LinearLayout>
     <LinearLayout
@@ -66,6 +66,7 @@
         android:layout_weight="0.00"
         android:id="@+id/layoutButton">
     <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/bValider"
         android:layout_width="181dp"
         android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
         android:text="Add"
         />
     <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/annuler"
         android:layout_width="181dp"
         android:layout_height="wrap_content"
