@@ -56,7 +56,7 @@ public class ChoiceDrawing extends AppCompatActivity {
             ImageItem it ;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GridViewAdapter gridAdapter;
+                final GridViewAdapter gridAdapter;
 
                 gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.grid_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {

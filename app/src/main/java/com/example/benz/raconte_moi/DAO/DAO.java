@@ -3,8 +3,10 @@ package com.example.benz.raconte_moi.DAO;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -209,26 +211,7 @@ public class DAO {
         return titles;
     }
 
-    public void deleteImage(final Bitmap b, final String pathImage) {
-        // Create a storage reference from our app
-        // StorageReference storageRef = storage.getReference();
 
-// Create a reference to the file to delete
-        StorageReference desertRef = storageRef.child(pathImage);
-
-// Delete the file
-        desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //addImage(b,pathImage);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Uh-oh, an error occurred!
-            }
-        });
-    }
 
 
 

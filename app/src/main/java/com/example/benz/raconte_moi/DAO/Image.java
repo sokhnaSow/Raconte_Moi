@@ -12,9 +12,6 @@ public class Image {
         this.pathImage = pathImage;
     }
 
-    public Image(String pathImage) {
-        this.pathImage = pathImage;
-    }
 
     public Image() {
 
