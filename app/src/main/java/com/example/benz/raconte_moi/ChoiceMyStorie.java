@@ -64,7 +64,7 @@ public class ChoiceMyStorie extends AppCompatActivity {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                     Writing w = child.getValue(Writing.class);
-                    if (w.getIdChild().equals(idChild) && w.isValide()) {
+                    if (w.getIdChild().equals(idChild) && w.isValide() && w.getCategorie().equals("Drawing")) {
                         idstories.add(w.getIdHistory());
                     }
                 }

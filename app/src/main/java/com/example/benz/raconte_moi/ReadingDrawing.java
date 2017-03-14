@@ -76,11 +76,8 @@ public class ReadingDrawing extends AppCompatActivity {
                 D.addReading(r);
                 Intent intent = new Intent(ReadingDrawing.this, ChoiceDrawing.class);
                 startActivity(intent);
-
             }
         });
-
-
         refData.child("Illustration").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -99,7 +96,7 @@ public class ReadingDrawing extends AppCompatActivity {
                                     System.out.println("getIdimage :" + i.getPathImage());
                                     if(child.getKey().equals(idImage)){
                                         StorageReference ref = storageRef.child(i.getPathImage());
-                                        final long ONE_MEGABYTE = 1024 * 1024;
+                                        final long ONE_MEGABYTE = (1024 * 1024)*6;
                                         ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                             @Override
                                             public void onSuccess(byte[] bytes) {

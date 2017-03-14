@@ -8,20 +8,13 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="143dp"
+        android:layout_height="90dp"
         android:layout_gravity="bottom"
         android:background="#00000c"
         android:padding="10dp"
         android:textColor="#fff"
         android:textSize="20dp"
         tools:text="hist" />
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="243dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter" />
 
     <Button
         android:text=" I finished my reading"
@@ -30,5 +23,12 @@
         android:id="@+id/btnfinish"
         android:textStyle="normal|bold|italic"
         android:background="@color/green" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="398dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter" />
 
 </FrameLayout>

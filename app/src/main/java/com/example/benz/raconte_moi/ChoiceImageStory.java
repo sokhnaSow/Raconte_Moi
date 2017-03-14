@@ -20,7 +20,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class ChoiceDrawing extends AppCompatActivity {
+public class ChoiceImageStory extends AppCompatActivity {
 
     private GridView gridView;
     private GridViewAdapter gridAdapter;
@@ -34,14 +34,16 @@ public class ChoiceDrawing extends AppCompatActivity {
 
 
     ImageItem it ;
-     ArrayList<ImageItem> imageItems;
+    ArrayList<ImageItem> imageItems;
     int i = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice_drawing);
+        setContentView(R.layout.activity_choice_image_story);
+
+
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
@@ -58,10 +60,10 @@ public class ChoiceDrawing extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                gridAdapter = new GridViewAdapter(ChoiceDrawing.this, R.layout.grid_history,imageItems);
+                gridAdapter = new GridViewAdapter(ChoiceImageStory.this, R.layout.grid_history,imageItems);
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Writing w = child.getValue(Writing.class);
-                    if (w.isValide() && w.getCategorie().equals("Drawing")) {
+                    if (w.isValide() && !(w.getCategorie().equals("Drawing"))) {
                         idstories.add(w.getIdHistory());
                     }
                 }
@@ -98,8 +100,8 @@ public class ChoiceDrawing extends AppCompatActivity {
         });
 
 
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            Intent intent = new Intent(ChoiceDrawing.this, ReadingDrawing.class);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            Intent intent = new Intent(ChoiceImageStory.this, ReadingDrawing.class);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
@@ -125,7 +127,7 @@ public class ChoiceDrawing extends AppCompatActivity {
                 Intent intent2 = getIntent();
                 String idChild = intent2.getStringExtra("idChild");
 
-                Intent intent = new Intent(ChoiceDrawing.this, ChoiceMyStorie.class);
+                Intent intent = new Intent(ChoiceImageStory.this, ChoiseMyImagestorie.class);
                 intent.putExtra("idChild",idChild);
                 startActivity(intent);
 
@@ -134,4 +136,3 @@ public class ChoiceDrawing extends AppCompatActivity {
 
     }
 }
-

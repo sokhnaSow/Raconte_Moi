@@ -15,6 +15,10 @@ public class Image {
         this.idCategory = idCategory;
     }
 
+    public Image(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
     public Image() {
 
     }

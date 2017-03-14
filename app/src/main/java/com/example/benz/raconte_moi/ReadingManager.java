@@ -32,6 +32,20 @@ public class ReadingManager extends AppCompatActivity {
 
             }
         });
+        btnImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent2 = getIntent();
+                String idChild = intent2.getStringExtra("idChild");
+
+                Intent intent = new Intent(ReadingManager.this, ChoiceImageStory.class);
+                intent.putExtra("idChild",idChild);
+
+                startActivity(intent);
+
+            }
+        });
     }
 
 

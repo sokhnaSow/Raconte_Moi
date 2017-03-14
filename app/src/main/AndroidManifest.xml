@@ -38,7 +38,9 @@
         <activity android:name=".ReadingDrawing" />
         <activity android:name=".ReadingMystories" />
         <activity android:name=".ChoiceMyStorie" />
-        <activity android:name=".Report"></activity>
+        <activity android:name=".Report" />
+        <activity android:name=".ChoiceImageStory" />
+        <activity android:name=".ChoiseMyImagestorie"></activity>
     </application>
 
 </manifest>
