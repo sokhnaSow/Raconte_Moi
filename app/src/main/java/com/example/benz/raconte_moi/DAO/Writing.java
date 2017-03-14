@@ -62,7 +62,6 @@ public class Writing {
         this.score = score;
     }
 
-
     public boolean isValide() {
         return valide;
     }

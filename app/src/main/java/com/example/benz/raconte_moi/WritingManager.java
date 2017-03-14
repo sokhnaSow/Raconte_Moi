@@ -5,33 +5,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class WritingManager extends AppCompatActivity implements View.OnClickListener{
 
-    Button drawingBtn, imageBtn;
+    ImageButton drawingBtn, imageBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writing_manager);
-        drawingBtn = (Button)findViewById(R.id.drawingBtn);
-        imageBtn  = (Button)findViewById(R.id.imageBtn);
+        drawingBtn = (ImageButton)findViewById(R.id.drawingBtn);
+        imageBtn  = (ImageButton)findViewById(R.id.imageBtn);
         drawingBtn.setOnClickListener(this);
         imageBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent2;
+        String idChild;
+        Intent intent;
         switch (view.getId()){
             case R.id.drawingBtn:
-                Intent intent2 = getIntent();
-                String idChild = intent2.getStringExtra("idChild");
+               intent2 = getIntent();
+                 idChild = intent2.getStringExtra("idChild");
 
-                Intent intent = new Intent(this, WritingDrawingManager.class);
+               intent = new Intent(this, WritingDrawingManager.class);
                 intent.putExtra("idChild",idChild);
                 startActivity(intent);
                 break;
             case R.id.imageBtn:
-                startActivity(new Intent(this, WritingImageManager.class));
+                intent2 = getIntent();
+                idChild = intent2.getStringExtra("idChild");
+                 intent = new Intent(this, WritingImageManager.class);
+                intent.putExtra("idChild",idChild);
+                startActivity(intent);
+
                 break;
         }
     }

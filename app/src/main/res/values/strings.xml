@@ -1,4 +1,9 @@
 <resources>
+
+
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
     <string name="app_name">Raconte-Moi</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>

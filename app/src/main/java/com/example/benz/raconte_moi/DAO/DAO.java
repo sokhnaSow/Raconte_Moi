@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +52,6 @@ public class DAO {
 
     public String addImage(Bitmap bitmap, String path) {
 
-        // store image on firebase storage
         System.out.println(path);
         StorageReference mountainsRef = storageRef.child(path);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -232,4 +232,36 @@ public class DAO {
 
 
 
+    public void deleteImage(final Bitmap b, final String pathImage) {
+        // Create a storage reference from our app
+       // StorageReference storageRef = storage.getReference();
+
+// Create a reference to the file to delete
+        StorageReference desertRef = storageRef.child(pathImage);
+
+// Delete the file
+        desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //addImage(b,pathImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Uh-oh, an error occurred!
+            }
+        });
+    }
+
+    public void deleteKid(String s) {
+        // Create a storage reference from our app
+        // StorageReference storageRef = storage.getReference();
+// Create a reference to the file to delete
+        Task desertRef = refData.child("children").child(s).removeValue();
+
+    }
+
+    public void editChildren(Child c, String s) {
+        refData.child("children").child(s).setValue(c);
+    }
 }

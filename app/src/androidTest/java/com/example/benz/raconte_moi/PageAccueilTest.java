@@ -21,5 +21,6 @@ public class PageAccueilTest {
     public ActivityTestRule<PageAccueil> m = new ActivityTestRule<PageAccueil>(PageAccueil.class);
     @Test
     public void useAppContext() throws  Exception {
+
     }
 }

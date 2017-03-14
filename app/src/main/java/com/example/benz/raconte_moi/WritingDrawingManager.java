@@ -1,83 +1,74 @@
 
-package com.example.benz.raconte_moi;
+        package com.example.benz.raconte_moi;
+
+        import android.app.Dialog;
+        import android.content.Context;
+        import android.content.DialogInterface;
+        import android.content.Intent;
+        import android.graphics.Bitmap;
+        import android.graphics.BitmapFactory;
+        import android.graphics.Canvas;
+        import android.graphics.Color;
+        import android.graphics.Paint;
+        import android.graphics.Picture;
+        import android.graphics.PorterDuff;
+        import android.graphics.RectF;
+        import android.net.Uri;
+        import android.os.Environment;
+        import android.provider.MediaStore;
+        import android.provider.Settings;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.ContextMenu;
+        import android.view.LayoutInflater;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageButton;
+        import android.widget.LinearLayout;
+        import android.widget.ListView;
+        import android.widget.RadioButton;
+        import android.widget.SeekBar;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
 
-import android.app.Dialog;
+        import com.bumptech.glide.Glide;
+        import com.example.benz.raconte_moi.DAO.Child;
+        import com.example.benz.raconte_moi.DAO.DAO;
+        import com.example.benz.raconte_moi.DAO.History;
+        import com.example.benz.raconte_moi.DAO.Illustration;
+        import com.example.benz.raconte_moi.DAO.Image;
+        import com.example.benz.raconte_moi.DAO.Writing;
+        import com.google.android.gms.tasks.OnSuccessListener;
+        import com.google.common.collect.HashBiMap;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.ValueEventListener;
+        import com.google.firebase.storage.FirebaseStorage;
+        import com.google.firebase.storage.StorageReference;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Picture;
-import android.graphics.PorterDuff;
-import android.graphics.RectF;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-
-import android.widget.RadioButton;
-
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.example.benz.raconte_moi.DAO.Child;
-
-import com.example.benz.raconte_moi.DAO.DAO;
-import com.example.benz.raconte_moi.DAO.History;
-import com.example.benz.raconte_moi.DAO.Illustration;
-import com.example.benz.raconte_moi.DAO.Image;
-import com.example.benz.raconte_moi.DAO.Writing;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-import com.google.common.collect.HashBiMap;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.ByteArrayOutputStream;
-
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
-import java.util.UUID;
+        import java.io.ByteArrayOutputStream;
+        import java.io.File;
+        import java.net.URI;
+        import java.util.ArrayList;
+        import java.util.Date;
+        import java.util.HashMap;
+        import java.util.Map;
+        import java.util.Objects;
+        import java.util.UUID;
 
 public class WritingDrawingManager extends AppCompatActivity implements View.OnClickListener {
-    public View rowView = null;
-    //final Dialog dialog = null;
+    View rowView = null;
+    final Dialog dialog = null;
 
     //custom drawing view
     private DrawingView drawView;
@@ -86,9 +77,9 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
     //sizes
     private float smallBrush, mediumBrush, largeBrush;
     private DAO d;
-    public String idChild = null;
-    public FirebaseDatabase database = FirebaseDatabase.getInstance();
-    public DatabaseReference refData = database.getReference();
+    String idChild = null;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference refData = database.getReference();
     private int positionItem;
     HashMap<String, String> writingHistory = new HashMap<>();
     private String idWriting="";
@@ -164,8 +155,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
         drawView.setPaintAlpha(100);
         drawView.setBrushSize(drawView.getLastBrushSize());
 
-        //if (view != currPaint) {
-        if (!view.equals(currPaint)){
+        if (view != currPaint) {
             ImageButton imgView = (ImageButton) view;
             String color = view.getTag().toString();
             drawView.setColor(color);
@@ -255,7 +245,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
             final EditText par =  ((EditText) findViewById(R.id.paragraph));
             par.setFocusableInTouchMode(true);
             idWriting="";
-            idWriting="";
+             idWriting="";
             pathImage="";
             idIllustration="";
             //new button
@@ -335,86 +325,86 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                 }
 
             } else {
-                //save drawing
-                final EditText para = (EditText) findViewById(R.id.paragraph);
-                if (para.getText().toString().trim().length() != 0) {
-                    AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-                    saveDialog.setTitle("Save drawing");
-                    saveDialog.setMessage("Save drawing to device Gallery?");
-                    saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //save drawing
-                            drawView.setDrawingCacheEnabled(true);
-                            //attempt to save
-                            String path = UUID.randomUUID().toString() + ".png";
-                            String imgSaved = MediaStore.Images.Media.insertImage(
-                                    getContentResolver(), drawView.getDrawingCache(),
-                                    path, "drawing");
-                            String uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI.getPath() + "/" + path;
+            //save drawing
+            final EditText para = (EditText) findViewById(R.id.paragraph);
+            if (para.getText().toString().trim().length() != 0) {
+                AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+                saveDialog.setTitle("Save drawing");
+                saveDialog.setMessage("Save drawing to device Gallery?");
+                saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //save drawing
+                        drawView.setDrawingCacheEnabled(true);
+                        //attempt to save
+                        String path = UUID.randomUUID().toString() + ".png";
+                        String imgSaved = MediaStore.Images.Media.insertImage(
+                                getContentResolver(), drawView.getDrawingCache(),
+                                path, "drawing");
+                        String uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI.getPath() + "/" + path;
 
-                            //feedback
-                            if (imgSaved != null) {
+                        //feedback
+                        if (imgSaved != null) {
 
-                                Toast savedToast = Toast.makeText(getApplicationContext(),
-                                        "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
-                                savedToast.show();
+                            Toast savedToast = Toast.makeText(getApplicationContext(),
+                                    "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
+                            savedToast.show();
 
-                                final DAO dao = new DAO();
+                            final DAO dao = new DAO();
 
-                                final String idImg = dao.addImage(drawView.getDrawingCache(), "Images/" +idChild + "/" + path);
+                            final String idImg = dao.addImage(drawView.getDrawingCache(), "Images/" +idChild + "/" + path);
 
-                                final String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
+                            final String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
 
-                                final Dialog dialoge = new Dialog(WritingDrawingManager.this);
-                                dialoge.setContentView(R.layout.layout_enter_titlte_history);
-                                final EditText title = (EditText) dialoge.findViewById(R.id.title);
+                            final Dialog dialoge = new Dialog(WritingDrawingManager.this);
+                            dialoge.setContentView(R.layout.layout_enter_titlte_history);
+                            final EditText title = (EditText) dialoge.findViewById(R.id.title);
 
-                                dialoge.setTitle("Enter title");
-                                dialoge.show();
-                                Button dialogButtonAddTtitle = (Button) dialoge.findViewById(R.id.okBtn_enterTitle);
-                                Button dialogButtondCancle = (Button) dialoge.findViewById(R.id.cancelBtn);
-                                dialogButtondCancle.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
+                            dialoge.setTitle("Enter title");
+                            dialoge.show();
+                            Button dialogButtonAddTtitle = (Button) dialoge.findViewById(R.id.okBtn_enterTitle);
+                            Button dialogButtondCancle = (Button) dialoge.findViewById(R.id.cancelBtn);
+                            dialogButtondCancle.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
 
-                                        dialoge.dismiss();
-                                    }
-                                });
-                                dialogButtonAddTtitle.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        History h = new History(title.getText().toString());
-                                        String keyH = d.addHistory(h);
-                                        Illustration i = new Illustration(idImg, keyH, text);
-                                        dao.addIllustration(i);
-                                        Date currentDate = new Date(System.currentTimeMillis());
-                                        Writing w = new Writing(idChild, keyH, 0, 0, false, "Drawing", currentDate);
-                                        idWriting = d.addWriting(w);
-                                        dialoge.dismiss();
-                                    }
-                                });
+                                    dialoge.dismiss();
+                                }
+                            });
+                            dialogButtonAddTtitle.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    History h = new History(title.getText().toString());
+                                    String keyH = d.addHistory(h);
+                                    Illustration i = new Illustration(idImg, keyH, text);
+                                    dao.addIllustration(i);
+                                    Date currentDate = new Date(System.currentTimeMillis());
+                                    Writing w = new Writing(idChild, keyH, 0, 0, false, "Drawing", currentDate);
+                                    idWriting = d.addWriting(w);
+                                    dialoge.dismiss();
+                                }
+                            });
 
 
-                            } else {
-                                Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                                        "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                                unsavedToast.show();
-                            }
-                            drawView.destroyDrawingCache();
+                        } else {
+                            Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                                    "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
+                            unsavedToast.show();
                         }
-                    });
-                    saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    saveDialog.show();
-                } else {
-                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                            "Oops! you should write a story.", Toast.LENGTH_SHORT);
-                    unsavedToast.show();
-                }
+                        drawView.destroyDrawingCache();
+                    }
+                });
+                saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                saveDialog.show();
+            } else {
+                Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                        "Oops! you should write a story.", Toast.LENGTH_SHORT);
+                unsavedToast.show();
             }
+        }
           /*  idWriting="";
             pathImage="";
             idIllustration="";*/
@@ -442,16 +432,10 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-                    /*
-                    ******Code*****
-                     */
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    /*
-                    *****Code******
-                     */
                 }
 
             });
@@ -483,7 +467,7 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
 
                         for (DataSnapshot writing : dataSnapshot.getChildren()) {
-                            //  writing.get
+                          //  writing.get
                             Writing w = writing.getValue(Writing.class);
                             if (w.getIdChild().equals(idChild) && !w.isValide() && w.getCategorie().equals("Drawing")) {
                                 titlesId.add(w.getIdHistory());
@@ -495,9 +479,6 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        /*
-                        *****Code******
-                         */
 
                     }
 
@@ -595,24 +576,24 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                                             String w = im.getKey();
                                             if (w.equals(idImage[0])) {
                                                 pathImage=im.getValue(Image.class).getPathImage();
-                                                String path = im.getValue(Image.class).getPathImage();
+                                               String path = im.getValue(Image.class).getPathImage();
                                                 StorageReference ref = storageRef.child(path);
-                                                final long ONE_MEGABYTE = 1024 * 1024;
-                                                ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                                    @Override
-                                                    public void onSuccess(byte[] bytes) {
-                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                                                        Bitmap drawableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+                                        final long ONE_MEGABYTE = 1024 * 1024;
+                                        ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                            @Override
+                                            public void onSuccess(byte[] bytes) {
+                                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                                Bitmap drawableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 
-                                                        drawView.upload(drawableBitmap);
+                                                drawView.upload(drawableBitmap);
 
 
-                                                    }
-                                                });
+                                            }
+                                        });
 
-                                                Toast.makeText(WritingDrawingManager.this, "Upload successfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(WritingDrawingManager.this, "Upload successfully", Toast.LENGTH_LONG).show();
 
-                                                dialog.dismiss();
+                                        dialog.dismiss();
 
 
                                             }
@@ -650,100 +631,100 @@ public class WritingDrawingManager extends AppCompatActivity implements View.OnC
                     taskMap.put("paragraphe", ((EditText) findViewById(R.id.paragraph)).getText().toString() );
                     FirebaseDatabase.getInstance().getReference().child("Illustration").child(idIllustration).updateChildren(taskMap);
                 }
-                if (idWriting.equals("")){
-                    //save drawing
-                    final EditText para = (EditText) findViewById(R.id.paragraph);
-                    if (para.getText().toString().trim().length() != 0) {
-                        AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-                        saveDialog.setTitle("Save&validate drawing");
-                        saveDialog.setMessage("Save&validate drawing to device Gallery?");
-                        saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                //save drawing
-                                drawView.setDrawingCacheEnabled(true);
-                                //attempt to save
-                                String path = UUID.randomUUID().toString() + ".png";
-                                String imgSaved = MediaStore.Images.Media.insertImage(
-                                        getContentResolver(), drawView.getDrawingCache(),
-                                        path, "drawing");
-                                String uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI.getPath() + "/" + path;
+          if (idWriting.equals("")){
+              //save drawing
+              final EditText para = (EditText) findViewById(R.id.paragraph);
+              if (para.getText().toString().trim().length() != 0) {
+                  AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+                  saveDialog.setTitle("Save&validate drawing");
+                  saveDialog.setMessage("Save&validate drawing to device Gallery?");
+                  saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int which) {
+                          //save drawing
+                          drawView.setDrawingCacheEnabled(true);
+                          //attempt to save
+                          String path = UUID.randomUUID().toString() + ".png";
+                          String imgSaved = MediaStore.Images.Media.insertImage(
+                                  getContentResolver(), drawView.getDrawingCache(),
+                                  path, "drawing");
+                          String uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI.getPath() + "/" + path;
 
-                                //feedback
-                                if (imgSaved != null) {
+                          //feedback
+                          if (imgSaved != null) {
 
-                                    Toast savedToast = Toast.makeText(getApplicationContext(),
-                                            "Drawing Saved&validate to Gallery!", Toast.LENGTH_SHORT);
-                                    savedToast.show();
+                              Toast savedToast = Toast.makeText(getApplicationContext(),
+                                      "Drawing Saved&validate to Gallery!", Toast.LENGTH_SHORT);
+                              savedToast.show();
 
-                                    final DAO dao = new DAO();
+                              final DAO dao = new DAO();
 
-                                    final String idImg = dao.addImage(drawView.getDrawingCache(), "Images/"+idChild+"/"+path);
+                              final String idImg = dao.addImage(drawView.getDrawingCache(), "Images/"+idChild+"/"+path);
 
-                                    final EditText par =  ((EditText) findViewById(R.id.paragraph));
-                                    final String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
+                              final EditText par =  ((EditText) findViewById(R.id.paragraph));
+                              final String text = ((EditText) findViewById(R.id.paragraph)).getText().toString();
 
-                                    final Dialog dialoge = new Dialog(WritingDrawingManager.this);
-                                    dialoge.setContentView(R.layout.layout_enter_titlte_history);
-                                    final EditText title = (EditText) dialoge.findViewById(R.id.title);
+                              final Dialog dialoge = new Dialog(WritingDrawingManager.this);
+                              dialoge.setContentView(R.layout.layout_enter_titlte_history);
+                              final EditText title = (EditText) dialoge.findViewById(R.id.title);
 
-                                    dialoge.setTitle("Enter title");
-                                    dialoge.show();
-                                    Button dialogButtonAddTtitle = (Button) dialoge.findViewById(R.id.okBtn_enterTitle);
-                                    Button dialogButtondCancle = (Button) dialoge.findViewById(R.id.cancelBtn);
-                                    dialogButtondCancle.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
+                              dialoge.setTitle("Enter title");
+                              dialoge.show();
+                              Button dialogButtonAddTtitle = (Button) dialoge.findViewById(R.id.okBtn_enterTitle);
+                              Button dialogButtondCancle = (Button) dialoge.findViewById(R.id.cancelBtn);
+                              dialogButtondCancle.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View v) {
 
-                                            dialoge.dismiss();
-                                        }
-                                    });
-                                    dialogButtonAddTtitle.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            History h = new History(title.getText().toString());
-                                            String keyH = d.addHistory(h);
-                                            Illustration i = new Illustration(idImg, keyH, text);
-                                            dao.addIllustration(i);
-                                            Date currentDate = new Date(System.currentTimeMillis());
-                                            Writing w = new Writing(idChild, keyH, 0, 0, true,"Drawing", currentDate);
-                                            idWriting=d.addWriting(w);
-                                            par.setFocusable(false);
-                                            dialoge.dismiss();
-                                        }
-                                    });
+                                      dialoge.dismiss();
+                                  }
+                              });
+                              dialogButtonAddTtitle.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View v) {
+                                      History h = new History(title.getText().toString());
+                                      String keyH = d.addHistory(h);
+                                      Illustration i = new Illustration(idImg, keyH, text);
+                                      dao.addIllustration(i);
+                                      Date currentDate = new Date(System.currentTimeMillis());
+                                      Writing w = new Writing(idChild, keyH, 0, 0, true,"Drawing", currentDate);
+                                      idWriting=d.addWriting(w);
+                                      par.setFocusable(false);
+                                      dialoge.dismiss();
+                                  }
+                              });
 
 
-                                } else {
-                                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                                            "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                                    unsavedToast.show();
-                                }
-                                drawView.destroyDrawingCache();
-                            }
-                        });
-                        saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                        saveDialog.show();
-                    } else {
-                        Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                                "Oops! you should write a story.", Toast.LENGTH_SHORT);
-                        unsavedToast.show();
-                    }
+                          } else {
+                              Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                                      "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
+                              unsavedToast.show();
+                          }
+                          drawView.destroyDrawingCache();
+                      }
+                  });
+                  saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int which) {
+                          dialog.cancel();
+                      }
+                  });
+                  saveDialog.show();
+              } else {
+                  Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                          "Oops! you should write a story.", Toast.LENGTH_SHORT);
+                  unsavedToast.show();
+              }
+          }
+          else {
+              Map<String,Object> taskMap = new HashMap<String,Object>();
+              taskMap.put("valide", true);
+               System.out.println(idWriting);
+              FirebaseDatabase.getInstance().getReference().child("Writing").child(idWriting).updateChildren(taskMap);
+              Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                      "Story validate", Toast.LENGTH_SHORT);
+              unsavedToast.show();
+          }
                 }
-                else {
-                    Map<String,Object> taskMap = new HashMap<String,Object>();
-                    taskMap.put("valide", true);
-                    System.out.println(idWriting);
-                    FirebaseDatabase.getInstance().getReference().child("Writing").child(idWriting).updateChildren(taskMap);
-                    Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                            "Story validate", Toast.LENGTH_SHORT);
-                    unsavedToast.show();
-                }
-            }
-                idWriting="";
+              idWriting="";
                 pathImage="";
                 idIllustration="";
             }
