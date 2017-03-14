@@ -40,11 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etMail = (EditText) findViewById(R.id.etNomUtilisateur);
-        etMotDePasse = (EditText) findViewById(R.id.etMotDePasse);
-        bConnexion = (Button) findViewById(R.id.bConnexion);
-        tvInscriptionLink = (TextView) findViewById(R.id.tvInscriptionLink);
-        tvOubliInfoLink = (TextView) findViewById(R.id.tvOubliInfoLink);
+        etMail = (EditText)findViewById(R.id.etNomUtilisateur);
+         etMotDePasse = (EditText)findViewById(R.id.etMotDePasse);
+        bConnexion = (Button)findViewById(R.id.bConnexion);
+        tvInscriptionLink = (TextView)findViewById(R.id.tvInscriptionLink);
+        tvOubliInfoLink = (TextView)findViewById(R.id.tvOubliInfoLink);
+
 
         bConnexion.setOnClickListener(this);
         tvInscriptionLink.setOnClickListener(this);
