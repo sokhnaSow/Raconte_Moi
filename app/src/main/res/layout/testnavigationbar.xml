@@ -5,17 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#423752"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-    <FrameLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_horizontal_ntb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_below="@id/toolbar"
-        android:id="@+id/fragmentContainer">
-
-    </FrameLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -43,7 +39,7 @@
                 app:ntb_title_mode="active"
                 app:ntb_titled="true"
                 app:ntb_scaled="false"
-                />
+                app:ntb_typeface="fonts/agency.ttf"/>
 
         </FrameLayout>
 

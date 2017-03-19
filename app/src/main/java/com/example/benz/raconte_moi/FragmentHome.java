@@ -401,7 +401,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener ,Adap
             //Toast.makeText(PageAccueil.this, "not implemented yet", Toast.LENGTH_LONG).show();
             //return true;
             case R.id.seeReport_item:
-                Toast.makeText(getContext(), "not implemented yet", Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(getContext(), Report.class);
                 intent.putExtra("idChild", itemsKeys.get(positionItem));
                 System.out.println(itemsKeys.get(positionItem));
@@ -484,7 +484,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener ,Adap
                 public void onClick(View view) {
 
                     int position = (Integer) view.getTag();
-
+                   // Toast.makeText(getContext(), "not implemented yet", Toast.LENGTH_LONG).show();
                     String idChild = itemsKeys.get(position);
                     Intent intent = new Intent(getContext(), ActivityManager.class);
                     intent.putExtra("idChild", idChild);

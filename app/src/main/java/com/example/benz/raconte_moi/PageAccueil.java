@@ -62,15 +62,11 @@ public class PageAccueil extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
-
         nom = getIntent().getExtras().getString("nom");
         prenom= getIntent().getExtras().getString("prenom");
         mail = getIntent().getExtras().getString("mail");
-
         idUser = getIntent().getExtras().getString("id");
-
         Bundle bundle = new Bundle();
-        String myMessage = "Stackoverflow is cool!";
         bundle.putString("nom",nom );
         bundle.putString("prenom",prenom );
         bundle.putString("mail",mail );
