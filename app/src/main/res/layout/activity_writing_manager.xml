@@ -10,28 +10,51 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-
+    android:weightSum="4"
     android:background="@drawable/backgroundlogin"
-    tools:context="com.example.benz.raconte_moi.WritingManager">
+    tools:context="com.example.benz.raconte_moi.WritingManager"
+    android:orientation="vertical">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_horizontal_ntb"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"/>
 
-    <ImageButton
-        android:id="@+id/drawingBtn"
-        android:layout_height="200dp"
-        android:layout_width="250dp"
-        android:layout_marginTop="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageBtn"
-        android:src="@drawable/drawing" />
+    <devlight.io.library.ntb.NavigationTabBar
+        android:id="@+id/ntb_horizontal"
+        android:layout_width="match_parent"
+        app:ntb_badge_gravity="top"
+        app:ntb_badge_position="right"
+        app:ntb_badged="true"
+        app:ntb_scaled="true"
+        app:ntb_tinted="true"
+        android:elevation="4dp"
+        app:ntb_title_mode="all"
+        app:ntb_titled="true"
+        app:ntb_swiped="true"
+        android:layout_height="60dp"
+        android:layout_below="@+id/imageBtn"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/imageBtn"
         android:layout_height="200dp"
         android:layout_width="250dp"
-        android:layout_alignParentBottom="true"
+        android:src="@drawable/images"
+        android:layout_below="@+id/drawingBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:src="@drawable/images" />
+        android:layout_marginTop="30dp" />
+
+    <ImageButton
+        android:id="@+id/drawingBtn"
+        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/drawing"
+        android:layout_below="@+id/vp_horizontal_ntb"
+        android:layout_alignStart="@+id/imageBtn" />
+
 
 </RelativeLayout>
 
