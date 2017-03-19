@@ -1,0 +1,5 @@
+<root>
+  <item name='android.view.Gravity START'>
+    <annotation name='android.support.annotation.NonNull' />
+  </item>
+</root>

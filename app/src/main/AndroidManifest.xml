@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.benz.raconte_moi">
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -21,10 +20,6 @@
         <activity android:name=".Inscription" />
         <activity android:name=".PageAccueil" />
         <activity android:name=".ActivityManager" />
-        <activity android:name=".ReadingManager" />
-        <activity android:name=".WritingDrawingManager" />
-        <activity android:name=".WritingImageManager" />
-        <activity android:name=".WritingManager" />
         <activity android:name=".AjoutEnfant" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

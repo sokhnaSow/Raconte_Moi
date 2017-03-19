@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_manager"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-
-    android:paddingTop="@dimen/activity_vertical_margin"
-
-    android:background="@drawable/backgroundlogin"
+    android:background="#423752"
+    android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/fragmentContainer">
 
-        <Button
-            android:text="readingBtn"
+    </FrameLayout>
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000">
+
+        <FrameLayout
+            android:id="@+id/wrapper_ntb_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/readingBtn" />
+            app:layout_scrollFlags="scroll|enterAlways">
 
-        <Button
-            android:text="writingBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/writingBtn" />
-    </LinearLayout>
+            <devlight.io.library.ntb.NavigationTabBar
+                android:id="@+id/ntb_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:ntb_bg_color="#605271"
+                app:ntb_title_size="12sp"
+                app:ntb_badge_bg_color="#ffff0000"
+                app:ntb_badge_gravity="bottom"
+                app:ntb_badge_position="left"
+                app:ntb_badge_title_color="#ffffffff"
+                app:ntb_badge_use_typeface="true"
+                app:ntb_badged="true"
+                app:ntb_title_mode="active"
+                app:ntb_titled="true"
+                app:ntb_scaled="false"
+                />
 
-</RelativeLayout>
+        </FrameLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <View
+        android:id="@+id/mask"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="bottom"/>
+
+</android.support.design.widget.CoordinatorLayout>

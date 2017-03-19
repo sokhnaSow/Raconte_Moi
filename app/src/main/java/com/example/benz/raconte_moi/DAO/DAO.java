@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.benz.raconte_moi.PageAccueil;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +35,8 @@ public class DAO {
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference refData = database.getReference();
     public HashMap<String, String> titles = new HashMap<String, String>();
-
+    public static String[] key = {"trouv"};
+    public int trouv=0;
     // Ajouter histoire
 
     public FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -102,13 +105,37 @@ public class DAO {
 
     }
 
-    public String addChildren(Child children){
+    public String addChildren(final Child children){
+         key[0] ="trouv";
+           trouv=0;
+        refData.child("children").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot child : dataSnapshot.getChildren()){
+                    Child c = child.getValue(Child.class);
+                    if(c.getNameChild().equals(children.getNameChild())){
+                        trouv = 1;
+                    }
+                }
+                if (trouv!=1)
+                {
+                    key[0] = refData.child("children").push().getKey();
+                    refData.child("children").child(key[0]).setValue(children);
+
+                }
 
 
-        String key = refData.child("children").push().getKey();
-        refData.child("children").child(key).setValue(children);
+            }
 
-        return key;
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
+        return key[0];
     }
 
 

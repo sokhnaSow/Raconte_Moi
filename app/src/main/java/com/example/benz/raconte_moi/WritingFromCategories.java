@@ -85,7 +85,7 @@ public class WritingFromCategories extends AppCompatActivity implements View.OnC
 
         Intent intent = getIntent();
         idChild = intent.getStringExtra("idChild");
-        
+
         storageRef = storage.getReference();
         StorageReference ref = storageRef.child("Cartegories/"+ categorie+"/1.jpg");
         final long ONE_MEGABYTE = 1024 * 1024;
